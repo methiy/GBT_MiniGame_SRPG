@@ -9,21 +9,25 @@ public class GrabManager : MonoBehaviour
 
     [SerializeField] private GameObject grabGO;
     private bool isLock = false;
-    private Camera camera = new Camera();
+    private Camera sceneCamera;
 
-    public void Awake()
+    private void Awake()
     {
         Instance = this;
-        camera = Camera.main;
+        this.sceneCamera = Camera.main;
     }
 
-    public void Update()
+    private void Start()
+    {
+        EventManager.Instance.AddListener(EventName.OnGrabObjectPutDownEvent, OnGrabGOPutDown);
+    }
+    private void Update()
     {
         if (!this.grabGO || isLock)
         {
             return;
         }
-        Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+        Ray ray = sceneCamera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
         {
             var high = hit.collider.bounds.size.y;
@@ -31,11 +35,10 @@ public class GrabManager : MonoBehaviour
         }
     }
 
-    // TODO:转换成状态机更换当前需要抓取的mesh
-    public void Start()
+    public void UpdateGrabMesh(GameObject newGrabGO)
     {
         grabGO.SetActive(true);
-        grabGO.GetComponent<MeshFilter>().mesh = GameObject.Find("Player").GetComponent<MeshFilter>().mesh;
+        grabGO.GetComponent<MeshFilter>().mesh = newGrabGO.GetComponent<MeshFilter>().mesh;
     }
 
     // 固定当前抓取的物体到某一格上
@@ -52,7 +55,7 @@ public class GrabManager : MonoBehaviour
     }
     
     // 当在某一格放下时隐藏GrabGO
-    public void OnGrabGOPutDown()
+    public void OnGrabGOPutDown(object sender, EventArgs e)
     {
         this.grabGO.SetActive(false);
     }
