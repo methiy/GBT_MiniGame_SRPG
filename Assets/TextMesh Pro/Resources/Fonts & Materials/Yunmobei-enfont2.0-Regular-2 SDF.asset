@@ -86,8 +86,8 @@ Material:
     - _StencilOp: 0
     - _StencilReadMask: 255
     - _StencilWriteMask: 255
-    - _TextureHeight: 1024
-    - _TextureWidth: 1024
+    - _TextureHeight: 2048
+    - _TextureWidth: 2048
     - _UnderlayDilate: 0
     - _UnderlayOffsetX: 0
     - _UnderlayOffsetY: 0
@@ -120,9 +120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Yunmobei-enfont2.0-Regular-2 SDF
   m_EditorClassIdentifier: 
-  hashCode: 0
+  hashCode: -1942409106
   material: {fileID: -6436973417950404714}
-  materialHashCode: 0
+  materialHashCode: 785572110
   m_Version: 1.1.0
   m_SourceFontFileGUID: 86b44fce55cba9247b5a9cb550af2766
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 86b44fce55cba9247b5a9cb550af2766, type: 3}
@@ -161,8 +161,8 @@ MonoBehaviour:
   m_FreeGlyphRects:
   - m_X: 0
     m_Y: 0
-    m_Width: 1023
-    m_Height: 1023
+    m_Width: 2047
+    m_Height: 2047
   m_fontInfo:
     Name: 
     PointSize: 0
@@ -186,8 +186,8 @@ MonoBehaviour:
     AtlasWidth: 0
     AtlasHeight: 0
   atlas: {fileID: 0}
-  m_AtlasWidth: 1024
-  m_AtlasHeight: 1024
+  m_AtlasWidth: 2048
+  m_AtlasHeight: 2048
   m_AtlasPadding: 9
   m_AtlasRenderMode: 4165
   m_glyphInfoList: []
@@ -204,8 +204,8 @@ MonoBehaviour:
     pointSize: 90
     padding: 9
     packingMode: 0
-    atlasWidth: 1024
-    atlasHeight: 1024
+    atlasWidth: 2048
+    atlasHeight: 2048
     characterSetSelectionMode: 7
     characterSequence: 
     referencedFontAssetGUID: 
@@ -281,7 +281,7 @@ Texture2D:
     m_WrapV: 0
     m_WrapW: 0
   m_LightmapFormat: 0
-  m_ColorSpace: 1
+  m_ColorSpace: 0
   m_PlatformBlob: 
   image data: 0
   _typelessdata: 
