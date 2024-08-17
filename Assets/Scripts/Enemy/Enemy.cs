@@ -25,12 +25,12 @@ public class Enemy : MonoBehaviour
             Move();
         }
     }
-    private void Move()
-    {
-        print("该移动了");
-    }
     private void CalculateDamage()
     {
         print("结算伤害");
+    }
+    private void Move()
+    {
+        print("该移动了");
     }
 }
