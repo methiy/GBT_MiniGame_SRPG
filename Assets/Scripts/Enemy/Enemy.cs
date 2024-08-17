@@ -9,19 +9,27 @@ public class Enemy : MonoBehaviour
     private ChessBoardGrid currentGrid;
     private void Start()
     {
-        EventManager.Instance.AddListener(EventName.EnemyCalculateDamage, OnCalculateDamage);
-        EventManager.Instance.AddListener(EventName.OnEnemyMoveEvent,OnMove);
+        EventManager.Instance.AddListener(EventName.OnChangeGameFlowStateMachineEvent, OnChangeGameFlowStateMachine);
     }
     public void SetCurrentGrid(ChessBoardGrid grid)
     {
         this.currentGrid = grid;
     }
     
-    private void OnMove(object obj,EventArgs e)
+    private void OnChangeGameFlowStateMachine(object sender,EventArgs e)
+    {
+        var args = e as OnChangeGameFlowStateMachineArgs;
+        if(args.newState == GameFlowStateManager.Instance.enemyState)
+        {
+            CalculateDamage();
+            Move();
+        }
+    }
+    private void Move()
     {
         print("该移动了");
     }
-    private void OnCalculateDamage(object obj,EventArgs e)
+    private void CalculateDamage()
     {
         print("结算伤害");
     }

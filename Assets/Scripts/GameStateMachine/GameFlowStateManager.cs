@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameFlowStateManager : StateMachineManager
@@ -27,5 +28,13 @@ public class GameFlowStateManager : StateMachineManager
             }
         });
     }
-
+    public override bool GoToState(StateSystem newState)
+    {
+        EventManager.Instance.TriggerEvent(EventName.OnChangeGameFlowStateMachineEvent, this, new OnChangeGameFlowStateMachineArgs
+        {
+            oldState = currentState,
+            newState = newState
+        });
+        return base.GoToState(newState);
+    }
 }

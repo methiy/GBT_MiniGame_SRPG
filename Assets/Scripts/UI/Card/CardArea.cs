@@ -4,76 +4,78 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum CardType
+{
+    MoveCard,
+    MagicCard
+}
 public class CardArea : MonoBehaviour
 {
-    [SerializeField] private Button collectionButton;
     [SerializeField] private Button skipButton;
     [SerializeField] private Transform cardContainer;
     [SerializeField] private List<Transform> moveCardGroup;
     [SerializeField] private List<Transform> magicCardGroup;
+    private CardType cardType;
+    private bool bCanCollection = true;
 
     private void Start()
     {
-        EventManager.Instance.AddListener(EventName.DrawCardEvent, OnDrawCardEvent);
-        EventManager.Instance.AddListener(EventName.HideCardAreaEvent, (object obj, EventArgs e) =>
-        {
-            gameObject.SetActive(false);
-        });
-        collectionButton.onClick.AddListener(OnCollectionButtonClicked);
+        EventManager.Instance.AddListener(EventName.OnChangeGameFlowStateMachineEvent, OnChangeGameFlowStateMachine);
         skipButton.onClick.AddListener(OnSkipButtonClicked);
         gameObject.SetActive(false);
     }
 
-    private void OnCollectionButtonClicked()
+    private void OnChangeGameFlowStateMachine(object obj, EventArgs args)
     {
-        // 检测集气多少;
-        PlayerProps.Instance.AddPower(4);
-        if (PlayerProps.Instance.SubStep(1) > 0) 
+        var e = args as OnChangeGameFlowStateMachineArgs;
+        if ((e.oldState == GameFlowStateManager.Instance.beginState || e.oldState == GameFlowStateManager.Instance.enemyState) && e.newState == GameFlowStateManager.Instance.moveCardState)
         {
-            GameFlowStateManager.Instance.GoToState(GameFlowStateManager.Instance.magicCardState);
+            gameObject.SetActive(true);
+            cardType = CardType.MoveCard;
+            bCanCollection = true;
         }
-        else
+        else if (e.newState == GameFlowStateManager.Instance.magicCardState)
         {
-            GameFlowStateManager.Instance.GoToState(GameFlowStateManager.Instance.enemyState);
+            cardType = CardType.MagicCard;
+        }
+        else if (e.newState == GameFlowStateManager.Instance.moveCardState)
+        {
+            cardType = CardType.MoveCard;
+        }
+        else if (e.oldState == GameFlowStateManager.Instance.moveCardState)
+        {
+            gameObject.SetActive(false);
         }
     }
     private void OnSkipButtonClicked()
     {
-        GameFlowStateManager.Instance.GoToState(GameFlowStateManager.Instance.moveCardState);
-    }
-    private void OnDrawCardEvent(object sender,EventArgs e)
-    {
-        gameObject.SetActive(true);
-        OnDrawCardArgs args = e as OnDrawCardArgs;
-        if (args == null)
-        {
-            return;
-        }
-        switch (args.cardType)
+        switch (cardType)
         {
             case CardType.MoveCard:
-                ShowUIElement(moveCardGroup);
-                HideUIElement(magicCardGroup);
+                if (bCanCollection)
+                {
+                    OnCollection();
+                    bCanCollection = false;
+                }
+                if (PlayerProps.Instance.SubStep(1) > 0)
+                {
+                    GameFlowStateManager.Instance.GoToState(GameFlowStateManager.Instance.magicCardState);
+                }
+                else
+                {
+                    GameFlowStateManager.Instance.GoToState(GameFlowStateManager.Instance.enemyState);
+                }
                 break;
             case CardType.MagicCard:
-                ShowUIElement(magicCardGroup);
-                HideUIElement(moveCardGroup);
+                GameFlowStateManager.Instance.GoToState(GameFlowStateManager.Instance.moveCardState);
                 break;
         }
     }
 
-    private void ShowUIElement(List<Transform> elements)
+    private void OnCollection()
     {
-        foreach (Transform element in elements)
-        {
-            element.gameObject.SetActive(true);
-        }
-    }
-    private void HideUIElement(List<Transform> elements)
-    {
-        foreach(Transform element in elements)
-        {
-            element.gameObject.SetActive(false);
-        }
+        // 检测集气多少;
+        print("集气");
+        PlayerProps.Instance.AddPower(4);
     }
 }

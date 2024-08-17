@@ -7,12 +7,9 @@ public class OnGrabObjectPutDownArgs : EventArgs
 {
     public Vector3 putPosition;
 }
-public enum CardType
+
+public class OnChangeGameFlowStateMachineArgs : EventArgs
 {
-    MoveCard,
-    MagicCard,
-}
-public class OnDrawCardArgs : EventArgs
-{
-    public CardType cardType;
+    public StateSystem oldState;
+    public StateSystem newState;
 }

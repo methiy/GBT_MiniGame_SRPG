@@ -11,10 +11,6 @@ public class MoveCardState : StateSystem
             print("÷ÿ÷√≤Ω ˝");
             PlayerProps.Instance.RestStep();
         }
-        EventManager.Instance.TriggerEvent(EventName.DrawCardEvent,this, new OnDrawCardArgs
-        {
-            cardType = CardType.MoveCard
-        });
     }
 
     public override void Execute()
@@ -24,6 +20,5 @@ public class MoveCardState : StateSystem
 
     public override void Leave(StateSystem newState = null)
     {
-        EventManager.Instance.TriggerEvent(EventName.HideCardAreaEvent, this);
     }
 }
