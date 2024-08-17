@@ -1424,7 +1424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dfeb2f04a4448c4e9215b6adde096c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  originCell: {fileID: 4566841734600648505, guid: 0027f90a12ae63341ad565be9ef356d0, type: 3}
+  originCell: {fileID: -2624456270774747254, guid: 0027f90a12ae63341ad565be9ef356d0, type: 3}
   padding: 0.1
   row: 5
   col: 5
@@ -1956,6 +1956,18 @@ PrefabInstance:
     - target: {fileID: 506156997445768161, guid: e6669ba56ef51d34fbe6434087be1960, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3269904195073334597, guid: e6669ba56ef51d34fbe6434087be1960, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5.1201215
+      objectReference: {fileID: 0}
+    - target: {fileID: 3269904195073334597, guid: e6669ba56ef51d34fbe6434087be1960, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5.1201215
+      objectReference: {fileID: 0}
+    - target: {fileID: 3269904195073334597, guid: e6669ba56ef51d34fbe6434087be1960, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5.1201215
       objectReference: {fileID: 0}
     - target: {fileID: 3269904195073334597, guid: e6669ba56ef51d34fbe6434087be1960, type: 3}
       propertyPath: m_LocalPosition.x

@@ -7,6 +7,8 @@ public class Cell : MonoBehaviour
     [SerializeField] private Color highColor;
     private Material selfMaterial;
     private Color originColor;
+    public int x;
+    public int y;
 
     private void Start()
     {

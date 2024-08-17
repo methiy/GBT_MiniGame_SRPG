@@ -45,6 +45,12 @@ public class TickTraceComponent : MonoBehaviour
                 case GameState.Move:
                     if (currentCell != null)
                     {
+                        //Vector2 x1 = new Vector2(0, 1);
+                        //Vector2 x2 = new Vector2(0, -1);
+                        //Vector2 x3 = new Vector2(-1, 0);
+                        //Vector2 x4 = new Vector2(1, 0);
+                        //List<Vector2> list = new List<Vector2> { x1, x2, x3, x4 };
+                        //MapManager.Instance.HighCell(new Vector2(currentCell.x, currentCell.y), list);
                         currentCellUnit.SetCell(currentCell);
                     }
 
@@ -84,7 +90,6 @@ public class TickTraceComponent : MonoBehaviour
                 if (currentCellUnit != null)
                 {
                     currentCellUnit.UnSelect();
-                    //currentCellUnit = null;
                 }
             }
         }
@@ -96,26 +101,6 @@ public class TickTraceComponent : MonoBehaviour
                 currentCell = null;
             }
 
-        }
-    }
-
-    private void TogglePutDownToSelect()
-    {
-        state = GameState.Select;
-        if (currentCell != null)
-        {
-            currentCell.Normal();
-            currentCell = null;
-        }
-    }
-
-    private void ToggleSelectToPutDown()
-    {
-        state = GameState.PutDown;
-        if (currentCellUnit != null)
-        {
-            currentCellUnit.UnSelect();
-            currentCellUnit = null;
         }
     }
 }
