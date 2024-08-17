@@ -8,6 +8,7 @@ public class GrabManager : MonoBehaviour
     public static GrabManager Instance { get; private set; }
 
     [SerializeField] private GameObject grabGO;
+    private GameObject currentHandleGO;
     private bool isLock = false;
     private Camera sceneCamera;
 
@@ -23,22 +24,22 @@ public class GrabManager : MonoBehaviour
     }
     private void Update()
     {
-        if (!this.grabGO || isLock)
+        if (!currentHandleGO || isLock)
         {
             return;
         }
         Ray ray = sceneCamera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
         {
-            var high = hit.collider.bounds.size.y;
-            this.grabGO.gameObject.transform.position = new Vector3(hit.point.x,hit.collider.transform.position.y+high,hit.point.z);
+            grabGO.gameObject.transform.position = hit.point;
         }
     }
 
-    public void UpdateGrabMesh(GameObject newGrabGO)
+    public void UpdateGrabGO(GameObject newGrabGO)
     {
-        grabGO.SetActive(true);
+        currentHandleGO = newGrabGO;
         grabGO.GetComponent<MeshFilter>().mesh = newGrabGO.GetComponent<MeshFilter>().mesh;
+        grabGO.SetActive(true);
     }
 
     // 固定当前抓取的物体到某一格上
@@ -53,10 +54,16 @@ public class GrabManager : MonoBehaviour
     {
         this.isLock = false;
     }
-    
-    // 当在某一格放下时隐藏GrabGO
-    public void OnGrabGOPutDown(object sender, EventArgs e)
+
+    public GameObject GetHandleGO()
     {
-        this.grabGO.SetActive(false);
+        return this.currentHandleGO;
+    }
+
+    // 当在某一格放下时隐藏GrabGO
+    private void OnGrabGOPutDown(object sender, EventArgs e)
+    {
+        currentHandleGO = null;
+        grabGO.SetActive(false);
     }
 }

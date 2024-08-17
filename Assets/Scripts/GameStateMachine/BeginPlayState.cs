@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class BeginPlayState : StateSystem
 {
-    [SerializeField] private GameObject player;
+    private GameObject player;
+    private void Start()
+    {
+        player = Player.Instance.gameObject;
+    }
     public override void Enter(StateSystem oldState = null)
     {
-        GrabManager.Instance.UpdateGrabMesh(player);
+        GrabManager.Instance.UpdateGrabGO(player);
+        EventManager.Instance.TriggerEvent(EventName.OnGrabObjectBeginEvent, this);
     }
 
     public override void Execute()
@@ -16,5 +21,6 @@ public class BeginPlayState : StateSystem
 
     public override void Leave(StateSystem newState = null)
     {
+        EventManager.Instance.TriggerEvent(EventName.OnGrabObjectEndEvent, this);
     }
 }

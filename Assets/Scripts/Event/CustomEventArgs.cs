@@ -7,3 +7,12 @@ public class OnGrabObjectPutDownArgs : EventArgs
 {
     public Vector3 putPosition;
 }
+public enum CardType
+{
+    MoveCard,
+    MagicCard,
+}
+public class OnDrawCardArgs : EventArgs
+{
+    public CardType cardType;
+}

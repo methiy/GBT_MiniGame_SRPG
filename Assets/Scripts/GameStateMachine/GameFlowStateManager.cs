@@ -6,9 +6,11 @@ using UnityEngine;
 public class GameFlowStateManager : StateMachineManager
 {
     public static GameFlowStateManager Instance;
-    [SerializeField] private BeginPlayState beginState;
-    [SerializeField] private DuringPlayState duringState;
-    [SerializeField] private EndPlayState endState;
+    public BeginPlayState beginState;
+    public MoveCardState moveCardState;
+    public MagicCardState magicCardState;
+    public EnemyState enemyState;
+    public EndPlayState endState;
     private void Awake()
     {
         Instance = this;
@@ -21,7 +23,7 @@ public class GameFlowStateManager : StateMachineManager
         {
             if(this.currentState == beginState)
             {
-                this.GoToState(duringState);
+                this.GoToState(moveCardState);
             }
         });
     }
