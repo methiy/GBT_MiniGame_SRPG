@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.PackageManager;
@@ -48,7 +49,7 @@ public class Unit : MonoBehaviour
     {
         if (!cell.bCanSpawn)
         {
-            print("被设置在不可以重生的地方");
+            Debug.LogError("被设置在不可以重生的地方");
         }
         if (this.currentCell != null)
         {
@@ -56,6 +57,10 @@ public class Unit : MonoBehaviour
             this.currentCell.bCanSpawn = true;
         }
         this.currentCell = cell;
+        transform.DOMove(cell.transform.position,2f).OnComplete(()=>
+        {
+
+        });
         transform.position = cell.transform.position;
         cell.bCanSelect = false;
         cell.bCanSpawn = false;

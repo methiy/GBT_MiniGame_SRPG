@@ -10,7 +10,11 @@ public class MagicCardState : StateSystem
 
     public override void Execute()
     {
-
+        if (TickTraceManager.Instance.currentCell == null)
+        {
+            return;
+        }
+        print("³öÊõ·¨ÅÆ");
     }
 
     public override void Leave(StateSystem newState = null)
