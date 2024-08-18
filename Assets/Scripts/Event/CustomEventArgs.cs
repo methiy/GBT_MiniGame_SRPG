@@ -23,3 +23,8 @@ public class OnGameOverEventArgs : EventArgs
 {
     public bool bIsWin;
 }
+
+public class OnEnemyCreateEventArgs : EventArgs
+{
+    public Enemy enemy;
+}

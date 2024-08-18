@@ -12,4 +12,5 @@ public static class EventName
     public const string OnPlayerHPChangedEvent = nameof(OnPlayerHPChangedEvent);
     public const string OnEnemyHPChangedEvent = nameof(OnEnemyHPChangedEvent);
     public const string OnGameOverEvent = nameof(OnGameOverEvent);
+    public const string OnEnemyCreateEvent = nameof(OnEnemyCreateEvent);
 }

@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class EnemyPropsPanelUI : MonoBehaviour
 {
@@ -10,10 +12,21 @@ public class EnemyPropsPanelUI : MonoBehaviour
     {
         Instance = this;
     }
-    public void AddChild(Enemy enemy)
+    private void Start()
     {
+        EventManager.Instance.AddListener(EventName.OnEnemyCreateEvent, OnEnemyCreate);
+    }
+    private void OnEnemyCreate(object obj,EventArgs e)
+    {
+        var args = e as OnEnemyCreateEventArgs;
         var enemyPropUI = Instantiate(enemyProp);
-        enemyPropUI.Init(enemy);
+        enemyPropUI.Init(args.enemy);
         enemyPropUI.transform.SetParent(transform);
     }
+    //public void AddChild(Enemy enemy)
+    //{
+    //    var enemyPropUI = Instantiate(enemyProp);
+    //    enemyPropUI.Init(enemy);
+    //    enemyPropUI.transform.SetParent(transform);
+    //}
 }

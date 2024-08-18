@@ -12,7 +12,32 @@ public class PlayerProps : MonoBehaviour
     private int maxStep = 2;
 
     private int power;
+
+    public int Power
+    {
+        get
+        {
+            return power;
+        }
+        set
+        {
+            power = value;
+            powerText.text = power.ToString();
+        }
+    }
     private int step;
+    public int Step
+    {
+        get
+        {
+            return step;
+        }
+        set
+        {
+            step = value;
+            stepText.text = step.ToString();
+        }
+    }
 
     private void Awake()
     {
@@ -28,28 +53,28 @@ public class PlayerProps : MonoBehaviour
     public void RestStep()
     {
         step = maxStep;
-        stepText.text = step.ToString();
     }
     public void AddStep(int step)
     {
         this.step += step;
-        stepText.text = this.step.ToString();
     }
     public void AddPower()
     {
         this.power += MapManager.Instance.Collection();
-        powerText.text = this.power.ToString();
     }
     public int SubStep(int step)
     {
         this.step -= step;
-        stepText.text = this.step.ToString();
         return this.step;
     }
     public void SubPower(int power)
     {
         this.power -= power;
-        powerText.text= this.power.ToString();
         // 消耗气事件
+    }
+
+    public void ClearPower()
+    {
+        this.power = 0;
     }
 }
