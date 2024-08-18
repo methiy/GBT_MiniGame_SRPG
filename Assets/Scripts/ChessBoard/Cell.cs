@@ -25,4 +25,12 @@ public class Cell : MonoBehaviour
     {
         selfMaterial.color = originColor;
     }
+    public void PreSelect()
+    {
+        selfMaterial.color = selectColor;
+    }
+    public void UnSelect()
+    {
+        selfMaterial.color = highColor;
+    }
 }

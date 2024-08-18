@@ -8,7 +8,7 @@ public enum UnitState
     PreSelect,
     Selected
 }
-public class CellUnit : MonoBehaviour
+public class Unit : MonoBehaviour
 {
     private Cell currentCell;
     private Outline outline;

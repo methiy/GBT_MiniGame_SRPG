@@ -39,14 +39,10 @@ public class MapManager : MonoBehaviour
     private void OnCardSelected(object sender, EventArgs e)
     {
         var args = e as OnCardSelectedArgs;
-        CellUnit currentCellUnit = GameObject.FindObjectOfType<CellUnit>();
+        Unit currentCellUnit = GameObject.FindObjectOfType<Unit>();
         if (currentCellUnit != null)
         {
             this.HighCell(currentCellUnit.GetCurrentCell(), args.rangeList);
-        }
-        else
-        {
-            print("√ª’“µΩ");
         }
     }
 
@@ -58,7 +54,17 @@ public class MapManager : MonoBehaviour
             if (cellMatrix.ContainsKey(tempIndex))
             {
                 cellMatrix[tempIndex].High();
+                cellMatrix[tempIndex].bCanSelect = true;
             }
+        }
+    }
+
+    public void LockCells()
+    {
+        foreach( var cell in cellMatrix)
+        {
+            cell.Value.bCanSelect = false;
+            cell.Value.Normal();
         }
     }
 }

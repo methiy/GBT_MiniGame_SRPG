@@ -22,4 +22,8 @@ public class StateMachineManager : MonoBehaviour
     {
         this.currentState.Execute();
     }
+    public StateSystem GetCurrentState()
+    {
+        return currentState;
+    }
 }

@@ -8,8 +8,7 @@ public class TickTraceManager : MonoBehaviour
     [SerializeField] private GameObject originUnit;
     private Transform currentTarget;
     public Cell currentCell;
-    public CellUnit currentCellUnit;
-    public bool bCanTraceCell = true;
+    public Unit currentCellUnit;
     private void Awake()
     {
         Instance = this;
@@ -46,7 +45,7 @@ public class TickTraceManager : MonoBehaviour
     }
     private void TraceCell()
     {
-        if (bCanTraceCell && currentTarget.TryGetComponent<Cell>(out Cell cell))
+        if (currentTarget.TryGetComponent<Cell>(out Cell cell))
         {
             if (!cell.bCanSelect)
             {
@@ -57,20 +56,36 @@ public class TickTraceManager : MonoBehaviour
                 currentCell.Normal();
             }
             currentCell = cell;
-            currentCell.High();
+            switch (GameFlowStateManager.Instance.GetCurrentState())
+            {
+                case BeginPlayState:
+                    currentCell.High();
+                    break;
+                case MoveCardState:
+                    currentCell.PreSelect();
+                    break;
+            }
+            
         }
         else
         {
             if (currentCell != null)
             {
-                currentCell.Normal();
+                if(GameFlowStateManager.Instance.GetCurrentState() is BeginPlayState)
+                {
+                    currentCell.Normal();
+                }
+                else
+                {
+                    currentCell.UnSelect();
+                }
                 currentCell = null;
             }
         }
     }
     private void TraceCellUnit()
     {
-        if (currentTarget.TryGetComponent<CellUnit>(out CellUnit unit))
+        if (currentTarget.TryGetComponent<Unit>(out Unit unit))
         {
             if (currentCellUnit != null && currentCellUnit != unit)
             {
