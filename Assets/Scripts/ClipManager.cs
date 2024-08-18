@@ -8,10 +8,6 @@ public class ClipManager : MonoBehaviour
     public AudioSource audioSource;
     private void Awake()
     {
-        if(Instance != null)
-        {
-            return;
-        }
         Instance = this;
         audioSource = GetComponent<AudioSource>();
         DontDestroyOnLoad(this);

@@ -22,13 +22,9 @@ public class MagicCardState : StateSystem
 
     public override void Execute()
     {
-        if (TickTraceManager.Instance.currentCellUnit != null)
-        {
-            print("Ä¿±ê" + TickTraceManager.Instance.currentCellUnit);
-        }
         if (TickTraceManager.Instance.currentCellUnit != null) 
         {
-            if(TickTraceManager.Instance.currentCellUnit.TryGetComponent<Enemy>(out Enemy enemy))
+            if(this.currentDamage != 0 && TickTraceManager.Instance.currentCellUnit.TryGetComponent<Enemy>(out Enemy enemy))
             {
                 int index = UnityEngine.Random.Range(0, clips.Count);
                 ClipManager.Instance.PlayClip(clips[index]);

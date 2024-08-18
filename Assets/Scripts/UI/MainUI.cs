@@ -11,6 +11,7 @@ public class MainUI : MonoBehaviour
     [SerializeField] private Button endButton;
     [SerializeField] private Transform SetPanel;
     public AudioClip clip;
+    public AudioClip bgm;
     private void Start()
     {
         beginButton.onClick.AddListener(() =>
@@ -28,5 +29,8 @@ public class MainUI : MonoBehaviour
             UnityEditor.EditorApplication.isPlaying = false;
             Application.Quit();
         });
+        print("ÐÞ¸Äclip");
+        SoundManager.Instance.audioSource.clip = bgm;
+        SoundManager.Instance.audioSource.Play();
     }
 }

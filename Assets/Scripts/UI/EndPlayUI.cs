@@ -14,7 +14,8 @@ public class EndPlayUI : MonoBehaviour
     [SerializeField] private Button continueButton;
     [SerializeField] private Button returnButton;
     [SerializeField] private Button backButton;
-
+    public ThanksUI thanksUI;
+    public AudioClip clip;
     private void Awake()
     {
         EventManager.Instance.AddListener(EventName.OnGameOverEvent, OnGameOver);
@@ -24,7 +25,17 @@ public class EndPlayUI : MonoBehaviour
         continueButton.onClick.AddListener(() =>
         {
             EventManager.Instance.Clear();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            if (SceneManager.GetActiveScene().buildIndex == SceneManager.sceneCountInBuildSettings - 1) 
+            {
+                thanksUI.gameObject.SetActive(true);
+                SoundManager.Instance.audioSource.clip = clip;
+                SoundManager.Instance.audioSource.Play();
+                thanksUI.PlayAnimator();
+            }
+            else
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
         });
         returnButton.onClick.AddListener(() =>
         {

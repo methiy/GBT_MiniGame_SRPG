@@ -1,3 +1,4 @@
+using DG.Tweening.Core.Easing;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,14 +6,20 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance { get; private set; }
-    private AudioSource audioSource;
+
+
+    public AudioSource audioSource;
     private void Awake()
     {
-        if (Instance != null)
+        if (Instance == null)
         {
-            return;
+            Instance = this;
+            DontDestroyOnLoad(gameObject); 
         }
-        Instance = this;
+        else
+        {
+            Destroy(gameObject); 
+        }
         audioSource = GetComponent<AudioSource>();
         DontDestroyOnLoad(this);
     }

@@ -13,7 +13,7 @@ public class CardArea : MonoBehaviour
 {
     public AudioClip clip;
     [SerializeField] private Button skipButton;
-    [SerializeField] private Transform cardContainer;
+    [SerializeField] private CardContainer cardContainer;
     [SerializeField] private List<Transform> moveCardGroup;
     [SerializeField] private List<Transform> magicCardGroup;
     private CardType cardType;
@@ -32,23 +32,26 @@ public class CardArea : MonoBehaviour
         if ((e.oldState == GameFlowStateManager.Instance.beginState || e.oldState == GameFlowStateManager.Instance.enemyState) && e.newState == GameFlowStateManager.Instance.moveCardState)
         {
             gameObject.SetActive(true);
-            cardContainer.GetComponent<CardContainer>().Init();
+            //cardContainer.GetComponent<CardContainer>().Init();
             cardType = CardType.MoveCard;
+            cardContainer.DrawCardWithType(cardType);
             bCanCollection = true;
         }
         else if (e.newState == GameFlowStateManager.Instance.magicCardState)
         {
             cardType = CardType.MagicCard;
+            cardContainer.DrawCardWithType(cardType);
         }
         else if (e.newState == GameFlowStateManager.Instance.moveCardState)
         {
             cardType = CardType.MoveCard;
+            cardContainer.DrawCardWithType(cardType);
         }
         else
         {
             gameObject.SetActive(false);
-            cardContainer.GetComponent<CardContainer>().DiscordCard();
-            cardContainer.GetComponent<CardContainer>().Uninit();
+            //cardContainer.GetComponent<CardContainer>().DiscordCard();
+            //cardContainer.GetComponent<CardContainer>().Uninit();
         }
     }
     private void OnSkipButtonClicked()

@@ -12,11 +12,47 @@ public class CardContainer : MonoBehaviour
     private Transform discardPosition; // ÆúÅÆÎ»ÖÃ
     private Transform cardPilePosition;
     [SerializeField]private GameObject cardPrefab;
+    public List<CardTemplate> moveCards;
+    public List<CardTemplate> magicCards;
+    private List<CardTemplate> myCards = new List<CardTemplate>();
 
-    public void Init(){
+    private void Start()
+    {
         drawPosition = GameObject.Find("DrawCardPosition")?.transform;
         discardPosition = GameObject.Find("DiscordCardPosition")?.transform;
         cardPilePosition = GameObject.Find("CardContainer")?.transform;
+    }
+    public void DrawCardWithType(CardType cardType)
+    {
+        foreach (var card in myCards)
+        {
+            Destroy(card.gameObject);
+        }
+        myCards.Clear();
+        List<CardTemplate> cardList;
+
+        if(cardType == CardType.MoveCard)
+        {
+            cardList = moveCards;
+        }
+        else
+        {
+            cardList = magicCards;
+        }
+
+        for(int i = 0; i < 5; i++)
+        {
+            int index = Random.Range(0, cardList.Count);
+            CardTemplate card = Instantiate(cardList[index]);
+            card.transform.SetParent(transform);
+            myCards.Add(card);
+        }
+        StartCoroutine(MoveToPosition(new Vector3(0, 183, 0), new Vector3(980, 183, 0)));
+    }
+    public void Init(){
+        //drawPosition = GameObject.Find("DrawCardPosition")?.transform;
+        //discardPosition = GameObject.Find("DiscordCardPosition")?.transform;
+        //cardPilePosition = GameObject.Find("CardContainer")?.transform;
         DrawCard();
         InitCardList();
     }
