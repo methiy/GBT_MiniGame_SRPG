@@ -31,6 +31,7 @@ public class CardArea : MonoBehaviour
         if ((e.oldState == GameFlowStateManager.Instance.beginState || e.oldState == GameFlowStateManager.Instance.enemyState) && e.newState == GameFlowStateManager.Instance.moveCardState)
         {
             gameObject.SetActive(true);
+            cardContainer.GetComponent<CardContainer>().Init();
             cardType = CardType.MoveCard;
             bCanCollection = true;
         }
@@ -45,6 +46,7 @@ public class CardArea : MonoBehaviour
         else if (e.oldState == GameFlowStateManager.Instance.moveCardState)
         {
             gameObject.SetActive(false);
+            cardContainer.GetComponent<CardContainer>().Uninit();
         }
     }
     private void OnSkipButtonClicked()
