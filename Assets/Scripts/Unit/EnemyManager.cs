@@ -20,6 +20,7 @@ public class EnemyManager : MonoBehaviour
         {
             Cell cell = MapManager.Instance.GetCellFromIndex(enemyPosList[i]);
             enemyList[i].SetCell(cell);
+            //EnemyPropsPanelUI.Instance.AddChild(enemyList[i]);
             EventManager.Instance.TriggerEvent(EventName.OnEnemyCreateEvent, this, new OnEnemyCreateEventArgs
             {
                 enemy = enemyList[i]

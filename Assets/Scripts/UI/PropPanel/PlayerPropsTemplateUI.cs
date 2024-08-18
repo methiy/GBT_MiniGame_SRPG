@@ -31,7 +31,6 @@ public class PlayerPropsTemplateUI : MonoBehaviour
     }
     private void OnPlayerHPChanged(object obj,EventArgs e)
     {
-        print("玩家血量改变"+ Player.Instance.HP);
         hpText.text = Player.Instance.HP.ToString();
         hpImage.fillAmount = Player.Instance.HP / Player.Instance.maxHp;
     }

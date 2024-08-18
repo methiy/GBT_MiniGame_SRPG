@@ -11,6 +11,7 @@ public class EnemyPropsPanelUI : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        EventManager.Instance.AddListener(EventName.OnEnemyCreateEvent, OnEnemyCreate);
     }
     private void Start()
     {
@@ -23,10 +24,10 @@ public class EnemyPropsPanelUI : MonoBehaviour
         enemyPropUI.Init(args.enemy);
         enemyPropUI.transform.SetParent(transform);
     }
-    //public void AddChild(Enemy enemy)
-    //{
-    //    var enemyPropUI = Instantiate(enemyProp);
-    //    enemyPropUI.Init(enemy);
-    //    enemyPropUI.transform.SetParent(transform);
-    //}
+    public void AddChild(Enemy enemy)
+    {
+        var enemyPropUI = Instantiate(enemyProp);
+        enemyPropUI.Init(enemy);
+        enemyPropUI.transform.SetParent(transform);
+    }
 }
