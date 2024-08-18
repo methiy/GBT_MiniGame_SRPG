@@ -74,6 +74,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7981902322541726050}
   - {fileID: 5807928176169610073}
   - {fileID: 6833200614224164888}
   - {fileID: 407027636596564700}
@@ -93,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b44dd553f4243694ba8aa90c64c5dd07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  beginStoryState: {fileID: 5885359071837030894}
   beginState: {fileID: 2039189111757994266}
   moveCardState: {fileID: 9017575087785286924}
   magicCardState: {fileID: 3681523031456640076}
@@ -184,6 +186,50 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc7cf4558fe390c46a2c4dbc3fa0bfeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &6484175071474677892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7981902322541726050}
+  - component: {fileID: 5885359071837030894}
+  m_Layer: 0
+  m_Name: BeginStoryState
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7981902322541726050
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6484175071474677892}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6871938465698945069}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5885359071837030894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6484175071474677892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ff95b3198eb0c34591ae65fad98466a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6906783263775407214

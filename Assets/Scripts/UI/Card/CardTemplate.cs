@@ -19,6 +19,7 @@ public class CardTemplate : MonoBehaviour, IDragHandler, IEndDragHandler,IPointe
     [SerializeField] private CardType cardType;
     [SerializeField] private List<Vector2> rangeList;
     [SerializeField] private string cardName;
+    public int damage = 1;
 
     private RectTransform rectTransform;
     [SerializeField]private Transform preParent;

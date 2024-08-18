@@ -45,9 +45,29 @@ public class MapManager : MonoBehaviour
     private void OnCardSelected(object sender, EventArgs e)
     {
         var args = e as OnCardSelectedArgs;
-        this.HighCell(Player.Instance.GetCurrentCell(), args.rangeList);
+        switch (args.cardType)
+        {
+            case CardType.MoveCard:
+                this.HighCell(Player.Instance.GetCurrentCell(), args.rangeList);
+                break;
+            case CardType.MagicCard:
+                this.ShowAtk(Player.Instance.GetCurrentCell(), args.rangeList);
+                break;
+        }
+        
     }
-
+    public void ShowAtk(Cell cell, List<Vector2> indexList)
+    {
+        foreach (var index in indexList)
+        {
+            Vector2 tempIndex = new Vector2(cell.pos.x + index.x, cell.pos.y + index.y);
+            if (cellMatrix.ContainsKey(tempIndex))
+            {
+                cellMatrix[tempIndex].bCanSelect = true;
+                cellMatrix[tempIndex].High();
+            }
+        }
+    }
     public void HighCell(Cell cell, List<Vector2> indexList)
     {
         foreach (var index in indexList)

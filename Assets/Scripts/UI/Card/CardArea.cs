@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public enum CardType
 {
     MoveCard,
-    MagicCard
+    MagicCard,
 }
 public class CardArea : MonoBehaviour
 {

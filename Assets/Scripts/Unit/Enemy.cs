@@ -23,4 +23,13 @@ public class Enemy : Unit
     {
         maxHp = hp;
     }
+
+    public void TakeDamage(int damage)
+    {
+        HP -= damage;
+        if (HP <= 0)
+        {
+            EventManager.Instance.TriggerEvent(EventName.OnEnemyDestroyEvent, this);
+        }
+    }
 }

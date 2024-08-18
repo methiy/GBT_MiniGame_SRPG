@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,6 +27,25 @@ public class EnemyManager : MonoBehaviour
                 enemy = enemyList[i]
             });
         }
+        EventManager.Instance.AddListener(EventName.OnEnemyDestroyEvent, OnEnemyDestroy);
+    }
+    private void OnEnemyDestroy(object obj,EventArgs e)
+    {
+        if(enemyList.Count == 1)
+        {
+            print("Ê¤Àû");
+            EventManager.Instance.TriggerEvent(EventName.OnGameOverEvent, this, new OnGameOverEventArgs
+            {
+                bIsWin = true
+            });
+            return;
+        }
+        var enemy = obj as Enemy;
+        var cell = enemy.GetCurrentCell();
+        cell.bCanSpawn = true;
+        print(enemy.name + "±»ÏûÃð");
+        enemyList.Remove(enemy);
+        Destroy(enemy);
     }
 
     public void EnemyHandle()

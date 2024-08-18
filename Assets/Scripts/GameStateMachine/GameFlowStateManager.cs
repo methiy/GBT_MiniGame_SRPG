@@ -7,6 +7,7 @@ using UnityEngine;
 public class GameFlowStateManager : StateMachineManager
 {
     public static GameFlowStateManager Instance;
+    public BeginStoryState beginStoryState;
     public BeginPlayState beginState;
     public MoveCardState moveCardState;
     public MagicCardState magicCardState;
@@ -18,7 +19,7 @@ public class GameFlowStateManager : StateMachineManager
     }
     private void Start()
     {
-        this.GoToState(beginState);
+        this.GoToState(beginStoryState);
     }
     public override bool GoToState(StateSystem newState)
     {

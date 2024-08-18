@@ -52,29 +52,29 @@ public class PlayerProps : MonoBehaviour
 
     public void RestStep()
     {
-        step = maxStep;
+        Step = maxStep;
     }
     public void AddStep(int step)
     {
-        this.step += step;
+        Step += step;
     }
     public void AddPower()
     {
-        this.power += MapManager.Instance.Collection();
+        Power += MapManager.Instance.Collection();
     }
     public int SubStep(int step)
     {
-        this.step -= step;
-        return this.step;
+        Step -= step;
+        return Step;
     }
     public void SubPower(int power)
     {
-        this.power -= power;
+        Power -= power;
         // 消耗气事件
     }
 
     public void ClearPower()
     {
-        this.power = 0;
+        Power = 0;
     }
 }

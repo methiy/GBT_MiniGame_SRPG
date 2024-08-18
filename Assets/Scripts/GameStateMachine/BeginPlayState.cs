@@ -15,7 +15,7 @@ public class BeginPlayState : StateSystem
     }
     public override void Enter(StateSystem oldState = null)
     {
-
+        TickTraceManager.Instance.gameObject.SetActive(true);
     }
 
     public override void Execute()
