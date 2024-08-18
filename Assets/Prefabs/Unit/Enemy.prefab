@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 1782657059516967054, guid: 4fb4d23d9072ddf42b74a7273ea33268, type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4712701857027191447, guid: 4fb4d23d9072ddf42b74a7273ea33268, type: 3}
       propertyPath: jumpHigh
       value: 0
@@ -91,3 +95,4 @@ MonoBehaviour:
   enemyName: 
   atkRange: []
   damage: 0
+  maxHp: 0

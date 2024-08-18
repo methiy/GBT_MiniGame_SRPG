@@ -45,7 +45,6 @@ public class EnemyManager : MonoBehaviour
         cell.bCanSpawn = true;
         print(enemy.name + "±»ÏûÃğ");
         enemyList.Remove(enemy);
-        Destroy(enemy);
     }
 
     public void EnemyHandle()

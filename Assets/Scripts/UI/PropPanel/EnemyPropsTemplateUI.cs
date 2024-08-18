@@ -20,16 +20,15 @@ public class EnemyPropsTemplateUI : MonoBehaviour
     {
         this.enemy = enemy;
         hpText.text = enemy.HP.ToString();
-        hpMaxText.text = enemy.HP.ToString();
+        hpMaxText.text = enemy.maxHp.ToString();
     }
 
     private void OnEnemyHPChanged(object obj,EventArgs e)
     {
         if(obj as Enemy == enemy)
         {
-            print("是我变了" + enemy.name);
             hpText.text = enemy.HP.ToString();
-            hpMaxText.text = enemy.HP.ToString();
+            hpMaxText.text = enemy.maxHp.ToString();
             hpImage.fillAmount = enemy.HP / enemy.maxHp;
         }
     }

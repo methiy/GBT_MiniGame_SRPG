@@ -23,7 +23,7 @@ public class CardContainer : MonoBehaviour
     public void Uninit(){
         foreach (var card in cards)
         {
-            Destroy(card);
+            Destroy(card.gameObject);
         }
     }
 

@@ -27,7 +27,6 @@ public class MoveCardState : StateSystem
         }
         else
         {
-            PlayerProps.Instance.ClearPower();
             GameFlowStateManager.Instance.GoToState(GameFlowStateManager.Instance.enemyState);
         }
     }

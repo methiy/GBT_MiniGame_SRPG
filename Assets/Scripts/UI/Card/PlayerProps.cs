@@ -75,6 +75,7 @@ public class PlayerProps : MonoBehaviour
 
     public void ClearPower()
     {
+        print("«Â¿Ì");
         Power = 0;
     }
 }

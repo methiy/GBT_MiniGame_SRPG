@@ -23,14 +23,17 @@ public class EndPlayUI : MonoBehaviour
     {
         continueButton.onClick.AddListener(() =>
         {
+            EventManager.Instance.Clear();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         });
         returnButton.onClick.AddListener(() =>
         {
+            EventManager.Instance.Clear();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         });
         backButton.onClick.AddListener(() =>
         {
+            EventManager.Instance.Clear();
             SceneManager.LoadScene(0);
         });
         int index = UnityEngine.Random.Range(0, storyList.Count);

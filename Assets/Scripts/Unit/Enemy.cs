@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class Enemy : Unit
 {
-    [SerializeField] private int hp;
+    [SerializeField] private float hp;
     [SerializeField] private string enemyName;
     public List<Vector2> atkRange;
     public int damage;
-    public int maxHp;
-    public int HP
+    public float maxHp;
+    public float HP
     {
         get { return hp; }
         set
@@ -30,6 +30,7 @@ public class Enemy : Unit
         if (HP <= 0)
         {
             EventManager.Instance.TriggerEvent(EventName.OnEnemyDestroyEvent, this);
+            Destroy(gameObject);
         }
     }
 }

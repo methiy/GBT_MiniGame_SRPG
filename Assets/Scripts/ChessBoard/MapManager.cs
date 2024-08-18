@@ -142,6 +142,10 @@ public class MapManager : MonoBehaviour
     public int Collection()
     {
         Cell cell = Player.Instance.GetCurrentCell();
+        if(cell == null)
+        {
+            print("没获取到Cell");
+        }
         Vector2 pos = cell.pos;
         int cnt = 0;
         foreach (Vector2 dir in dirList)

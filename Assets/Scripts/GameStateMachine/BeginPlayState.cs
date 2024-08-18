@@ -23,7 +23,8 @@ public class BeginPlayState : StateSystem
         if (TickTraceManager.Instance.currentCell != null)
         {
             GameObject clone = Instantiate(originUnit);
-            clone.GetComponent<Unit>().SetCell(TickTraceManager.Instance.currentCell);
+            clone.GetComponent<Player>().SetCell(TickTraceManager.Instance.currentCell);
+            //clone.GetComponent<Unit>().SetCell(TickTraceManager.Instance.currentCell);
             GameFlowStateManager.Instance.GoToState(GameFlowStateManager.Instance.moveCardState);
         }
     }

@@ -14,7 +14,7 @@ public class Unit : MonoBehaviour
 {
     [SerializeField] private float jumpHigh;
     [SerializeField] private float jumpTimer;
-    protected Cell currentCell;
+    private Cell currentCell;
     private Outline outline;
     private UnitState state;
 

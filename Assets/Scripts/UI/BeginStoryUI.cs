@@ -4,6 +4,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum t
+{
+
+}
 public class BeginStoryUI : MonoBehaviour
 {
     [SerializeField] private List<string> storys;

@@ -21,16 +21,18 @@ public class MagicCardState : StateSystem
 
     public override void Execute()
     {
-        if (TickTraceManager.Instance.currentCell == null)
+        if (TickTraceManager.Instance.currentCellUnit != null)
         {
-            return;
+            print("目标" + TickTraceManager.Instance.currentCellUnit);
         }
-
-        if (TickTraceManager.Instance.currentCellUnit != null && TickTraceManager.Instance.currentCellUnit is Enemy) 
+        if (TickTraceManager.Instance.currentCellUnit != null) 
         {
-            print("释放法术");
-            Enemy enemy = TickTraceManager.Instance.currentCellUnit as Enemy;
-            enemy.TakeDamage(currentDamage);
+            if(TickTraceManager.Instance.currentCellUnit.TryGetComponent<Enemy>(out Enemy enemy))
+            {
+                enemy.TakeDamage(currentDamage);
+                GameFlowStateManager.Instance.GoToState(GameFlowStateManager.Instance.moveCardState);
+            }
+            
         }
     }
 
