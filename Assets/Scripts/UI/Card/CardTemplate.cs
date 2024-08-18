@@ -30,8 +30,16 @@ public class CardTemplate : MonoBehaviour, IDragHandler, IEndDragHandler,IPointe
 
     private Vector3 originalScale;
 
+    private void init(){
+        cardContainer = GameObject.Find("CardContainer")?.GetComponent<CardContainer>();
+        preParent = GameObject.Find("CardContainer")?.transform;
+        tempParent = GameObject.Find("TempCardContainer")?.transform;
+        canvasGroup =GameObject.Find("CardContainer")?.GetComponent<CanvasGroup>();
+    }
+
     private void Start()
     {
+        init();
         cardButton.onClick.AddListener(() =>
         {
             MapManager.Instance.LockCells();
