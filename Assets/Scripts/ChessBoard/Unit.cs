@@ -1,5 +1,7 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public enum UnitState
@@ -10,6 +12,8 @@ public enum UnitState
 }
 public class Unit : MonoBehaviour
 {
+    [SerializeField] private float jumpHigh;
+    [SerializeField] private float jumpTimer;
     protected Cell currentCell;
     private Outline outline;
     private UnitState state;
@@ -45,13 +49,22 @@ public class Unit : MonoBehaviour
     }
     public void SetCell(Cell cell)
     {
-        if(this.currentCell != null)
+        if (!cell.bCanSpawn)
         {
+            Debug.LogError("被设置在不可以重生的地方");
+        }
+        if (this.currentCell != null)
+        {
+            this.currentCell.bCanSelect = true;
             this.currentCell.bCanSpawn = true;
         }
         this.currentCell = cell;
-        transform.position = cell.transform.position;
-        cell.bCanSpawn = false;
+        transform.DOJump(cell.transform.position, jumpHigh, 1, jumpTimer).OnComplete(() =>
+        {
+            transform.position = cell.transform.position;
+            cell.bCanSelect = false;
+            cell.bCanSpawn = false;
+        });
     }
     public Cell GetCurrentCell()
     {

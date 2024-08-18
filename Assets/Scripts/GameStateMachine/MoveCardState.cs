@@ -4,17 +4,11 @@ using UnityEngine;
 
 public class MoveCardState : StateSystem
 {
-    private bool bGotoMagic = true;
     public override void Enter(StateSystem oldState = null)
     {
         if (oldState == GameFlowStateManager.Instance.enemyState || oldState == GameFlowStateManager.Instance.beginState)
         {
-            bGotoMagic = true;
             PlayerProps.Instance.RestStep();
-        }
-        else
-        {
-            bGotoMagic = false;
         }
     }
 
@@ -24,10 +18,11 @@ public class MoveCardState : StateSystem
         {
             return;
         }
-        Unit unit = GameObject.FindObjectOfType<Unit>();
-        unit.SetCell(TickTraceManager.Instance.currentCell);
-        if (bGotoMagic)
+
+        Player.Instance.SetCell(TickTraceManager.Instance.currentCell);
+        if (PlayerProps.Instance.SubStep(1) > 0) 
         {
+            PlayerProps.Instance.AddPower();
             GameFlowStateManager.Instance.GoToState(GameFlowStateManager.Instance.magicCardState);
         }
         else

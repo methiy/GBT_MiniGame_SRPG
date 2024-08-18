@@ -43,7 +43,7 @@ public class CardArea : MonoBehaviour
         {
             cardType = CardType.MoveCard;
         }
-        else if (e.oldState == GameFlowStateManager.Instance.moveCardState)
+        else
         {
             gameObject.SetActive(false);
             cardContainer.GetComponent<CardContainer>().DiscordCard();
@@ -79,6 +79,6 @@ public class CardArea : MonoBehaviour
     {
         // 检测集气多少;
         print("集气");
-        PlayerProps.Instance.AddPower(4);
+        PlayerProps.Instance.AddPower();
     }
 }

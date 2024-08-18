@@ -31,6 +31,5 @@ public class BeginPlayState : StateSystem
     public override void Leave(StateSystem newState = null)
     {
         MapManager.Instance.LockCells();
-        //EventManager.Instance.TriggerEvent(EventName.OnGrabObjectEndEvent, this);
     }
 }

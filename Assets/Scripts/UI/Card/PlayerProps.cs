@@ -35,11 +35,10 @@ public class PlayerProps : MonoBehaviour
         this.step += step;
         stepText.text = this.step.ToString();
     }
-    public void AddPower(int power)
+    public void AddPower()
     {
-        this.power += power;
+        this.power += MapManager.Instance.Collection();
         powerText.text = this.power.ToString();
-        // 集气完毕事件
     }
     public int SubStep(int step)
     {

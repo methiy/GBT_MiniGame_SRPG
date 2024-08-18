@@ -45,19 +45,15 @@ public class MapManager : MonoBehaviour
     private void OnCardSelected(object sender, EventArgs e)
     {
         var args = e as OnCardSelectedArgs;
-        Unit currentCellUnit = GameObject.FindObjectOfType<Unit>();
-        if (currentCellUnit != null)
-        {
-            this.HighCell(currentCellUnit.GetCurrentCell(), args.rangeList);
-        }
+        this.HighCell(Player.Instance.GetCurrentCell(), args.rangeList);
     }
 
-    public void HighCell(Cell cell,List<Vector2> indexList)
+    public void HighCell(Cell cell, List<Vector2> indexList)
     {
-        foreach(var index in indexList)
+        foreach (var index in indexList)
         {
-            Vector2 tempIndex = new Vector2(cell.pos.x + index.x, cell.pos.y+index.y);
-            if (cellMatrix.ContainsKey(tempIndex))
+            Vector2 tempIndex = new Vector2(cell.pos.x + index.x, cell.pos.y + index.y);
+            if (cellMatrix.ContainsKey(tempIndex) && cellMatrix[tempIndex].bCanSpawn)
             {
                 cellMatrix[tempIndex].bCanSelect = true;
                 cellMatrix[tempIndex].High();
@@ -67,7 +63,7 @@ public class MapManager : MonoBehaviour
 
     public void LockCells()
     {
-        foreach( var cell in cellMatrix)
+        foreach (var cell in cellMatrix)
         {
             cell.Value.bCanSelect = false;
             cell.Value.Normal();
@@ -82,13 +78,13 @@ public class MapManager : MonoBehaviour
     {
         Vector2 enemyPos = enemy.GetCurrentCell().pos;
         Vector2 playerPos = Player.Instance.GetCurrentCell().pos;
-        foreach(var atk in enemy.atkRange)
+        foreach (var atk in enemy.atkRange)
         {
             Vector2 atkPos = new(enemyPos.x + atk.x, enemyPos.y + atk.y);
-            if(atkPos == playerPos)
+            if (atkPos == playerPos)
             {
                 return true;
-            }       
+            }
         }
         return false;
     }
@@ -97,20 +93,46 @@ public class MapManager : MonoBehaviour
         var cell = enemy.GetCurrentCell();
         Vector2 enemyPos = cell.pos;
         Vector2 playerPos = Player.Instance.GetCurrentCell().pos;
-        float oldDir = enemyPos.x - playerPos.x + enemyPos.y - playerPos.y;
+        Vector2 finalPos = new Vector2();
+        float oldDis = Vector2.Distance(enemyPos, playerPos);
+        bool found = false;
         foreach (Vector2 dir in dirList)
         {
             Vector2 newPos = enemyPos + dir;
-            float newDir = newPos.x - playerPos.x + newPos.y - playerPos.y;
-            if (cellMatrix.ContainsKey(newPos) && newDir <= oldDir)
+            float newDis = Vector2.Distance(newPos, playerPos);
+            if (cellMatrix.ContainsKey(newPos) && cellMatrix[newPos].bCanSpawn)
             {
-                if (cellMatrix[newPos].bCanSpawn)
+                if (newDis <= oldDis)
                 {
-                    print("发现新位置");
-                    enemy.SetCell(cellMatrix[newPos]);
+                    finalPos = newPos;
+                    found = true;
                 }
             }
         }
-        print("搜索完毕");
+        if (found)
+        {
+            print("最终坐标" + finalPos);
+            enemy.SetCell(cellMatrix[finalPos]);
+        }
+        else
+        {
+            print("不需要移动");
+        }
+    }
+    public int Collection()
+    {
+        Cell cell = Player.Instance.GetCurrentCell();
+        Vector2 pos = cell.pos;
+        int cnt = 0;
+        foreach (Vector2 dir in dirList)
+        {
+            Vector2 newPos = pos + dir;
+            if (cellMatrix.ContainsKey(newPos) && cellMatrix[newPos].bCanSpawn)
+            {
+                cnt++;
+            }
+        }
+        print("集氣：" + cnt);
+        return cnt;
     }
 }

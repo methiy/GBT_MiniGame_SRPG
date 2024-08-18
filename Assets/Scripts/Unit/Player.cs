@@ -31,5 +31,13 @@ public class Player : Unit
     public void TakeDamage(int damage)
     {
         HP -= damage;
+        if (HP <= 0)
+        {
+            EventManager.Instance.TriggerEvent(EventName.OnGameOverEvent, this, new OnGameOverEventArgs
+            {
+                bIsWin = false
+            });
+            GameFlowStateManager.Instance.GoToState(GameFlowStateManager.Instance.endState);
+        }
     }
 }
