@@ -16,15 +16,11 @@ public class EnemyManager : MonoBehaviour
     }
     private void Start()
     {
-        //foreach (var enemy in enemyList)
-        //{
-        //    Cell cell = MapManager.Instance.GetCellFromIndex(enemy.Value);
-        //    enemy.Key.SetCell(cell);
-        //}
         for(int i = 0;i < enemyList.Count; i++)
         {
             Cell cell = MapManager.Instance.GetCellFromIndex(enemyPosList[i]);
             enemyList[i].SetCell(cell);
+            EnemyPropsPanelUI.Instance.AddChild(enemyList[i]);
         }
     }
 
@@ -40,8 +36,13 @@ public class EnemyManager : MonoBehaviour
                 Player.Instance.TakeDamage(enemy.damage);
             }
         }
+
+        DelayUtil();
+    }
+
+    public void DelayUtil()
+    {
         StartCoroutine(Delay());
-        
     }
     private IEnumerator Delay()
     {

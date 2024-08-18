@@ -70,6 +70,7 @@ public class CardArea : MonoBehaviour
                 GameFlowStateManager.Instance.GoToState(GameFlowStateManager.Instance.moveCardState);
                 break;
         }
+
     }
 
     private void OnCollection()

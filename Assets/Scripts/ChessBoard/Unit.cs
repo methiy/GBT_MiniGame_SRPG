@@ -59,12 +59,9 @@ public class Unit : MonoBehaviour
             this.currentCell.bCanSpawn = true;
         }
         this.currentCell = cell;
-        transform.DOJump(cell.transform.position, jumpHigh, 1, jumpTimer).OnComplete(() =>
-        {
-            transform.position = cell.transform.position;
-            cell.bCanSelect = false;
-            cell.bCanSpawn = false;
-        });
+        cell.bCanSelect = false;
+        cell.bCanSpawn = false;
+        transform.DOJump(cell.transform.position, jumpHigh, 1, jumpTimer);
     }
     public Cell GetCurrentCell()
     {

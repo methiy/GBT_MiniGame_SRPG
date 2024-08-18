@@ -9,6 +9,7 @@ public class Enemy : Unit
     [SerializeField] private string enemyName;
     public List<Vector2> atkRange;
     public int damage;
+    public int maxHp;
     public int HP
     {
         get { return hp; }
@@ -17,5 +18,9 @@ public class Enemy : Unit
             hp = value;
             EventManager.Instance.TriggerEvent(EventName.OnEnemyHPChangedEvent, this);
         }
+    }
+    private void Start()
+    {
+        maxHp = hp;
     }
 }

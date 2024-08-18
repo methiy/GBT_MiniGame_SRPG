@@ -30,7 +30,6 @@ public class MoveCardState : StateSystem
             GameFlowStateManager.Instance.GoToState(GameFlowStateManager.Instance.enemyState);
         }
     }
-
     public override void Leave(StateSystem newState = null)
     {
         MapManager.Instance.LockCells();
