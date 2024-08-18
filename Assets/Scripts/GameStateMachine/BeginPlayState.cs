@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class BeginPlayState : StateSystem
 {
-    [SerializeField] private GameObject originUnit;
+    private GameObject originUnit;
+    private void Start()
+    {
+        originUnit = Resources.Load<GameObject>("Prefabs/Player");
+        if(originUnit == null)
+        {
+            print("加载玩家资源失败");
+        }
+    }
     public override void Enter(StateSystem oldState = null)
     {
 

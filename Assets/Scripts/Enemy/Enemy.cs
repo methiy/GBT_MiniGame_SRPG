@@ -3,34 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : Unit
 {
     [SerializeField] private int hp;
-    private ChessBoardGrid currentGrid;
-    private void Start()
+    [SerializeField] private string enemyName;
+    public List<Vector2> atkRange;
+    public int damage;
+    public int HP
     {
-        EventManager.Instance.AddListener(EventName.OnChangeGameFlowStateMachineEvent, OnChangeGameFlowStateMachine);
-    }
-    public void SetCurrentGrid(ChessBoardGrid grid)
-    {
-        this.currentGrid = grid;
-    }
-    
-    private void OnChangeGameFlowStateMachine(object sender,EventArgs e)
-    {
-        var args = e as OnChangeGameFlowStateMachineArgs;
-        if(args.newState == GameFlowStateManager.Instance.enemyState)
+        get { return hp; }
+        set
         {
-            CalculateDamage();
-            Move();
+            hp = value;
+            EventManager.Instance.TriggerEvent(EventName.OnEnemyHPChangedEvent, this);
         }
-    }
-    private void CalculateDamage()
-    {
-        print("结算伤害");
-    }
-    private void Move()
-    {
-        print("该移动了");
     }
 }

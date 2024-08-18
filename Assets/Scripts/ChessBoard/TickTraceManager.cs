@@ -26,7 +26,7 @@ public class TickTraceManager : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(1))
         {
-            if (currentCellUnit != null && currentCellUnit.state == UnitState.PreSelect)
+            if (currentCellUnit != null && currentCellUnit.IsPreSelect())
             {
                 currentCellUnit.Selected();
             }
@@ -53,19 +53,24 @@ public class TickTraceManager : MonoBehaviour
             }
             if (currentCell != null && currentCell != cell)
             {
-                currentCell.Normal();
+                if (GameFlowStateManager.Instance.GetCurrentState() is BeginPlayState)
+                {
+                    currentCell.Normal();
+                }
+                else
+                {
+                    currentCell.UnSelect();
+                }
             }
             currentCell = cell;
-            switch (GameFlowStateManager.Instance.GetCurrentState())
+            if (GameFlowStateManager.Instance.GetCurrentState() is BeginPlayState)
             {
-                case BeginPlayState:
-                    currentCell.High();
-                    break;
-                case MoveCardState:
-                    currentCell.PreSelect();
-                    break;
+                currentCell.High();
             }
-            
+            else
+            {
+                currentCell.PreSelect();
+            }
         }
         else
         {
