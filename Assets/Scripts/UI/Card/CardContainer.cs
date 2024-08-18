@@ -117,6 +117,7 @@ public class CardContainer : MonoBehaviour
 
         // 确保最终位置精确设置到目标位置
         transform.position = endPosition;
+        yield return new WaitForSeconds(1f);
     }
 
     

@@ -46,6 +46,7 @@ public class CardArea : MonoBehaviour
         else if (e.oldState == GameFlowStateManager.Instance.moveCardState)
         {
             gameObject.SetActive(false);
+            cardContainer.GetComponent<CardContainer>().DiscordCard();
             cardContainer.GetComponent<CardContainer>().Uninit();
         }
     }
