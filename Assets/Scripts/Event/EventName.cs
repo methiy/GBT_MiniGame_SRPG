@@ -9,4 +9,6 @@ public static class EventName
     public const string OnGrabObjectEndEvent = nameof(OnGrabObjectEndEvent);
     public const string OnChangeGameFlowStateMachineEvent = nameof(OnChangeGameFlowStateMachineEvent);
     public const string CardSelectedEvent = nameof(CardSelectedEvent);
+    public const string OnPlayerHPChangedEvent = nameof(OnPlayerHPChangedEvent);
+    public const string OnEnemyHPChangedEvent = nameof(OnEnemyHPChangedEvent);
 }

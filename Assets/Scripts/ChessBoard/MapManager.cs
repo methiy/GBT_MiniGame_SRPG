@@ -12,12 +12,17 @@ public class MapManager : MonoBehaviour
     [SerializeField] private int col;
     [SerializeField] private int cellW;
     private Dictionary<Vector2, Cell> cellMatrix = new Dictionary<Vector2, Cell>();
+    private readonly List<Vector2> dirList = new List<Vector2>
+    {
+        new(0,1),
+        new(0,-1),
+        new(1,0),
+        new(-1,0),
+    };
     private void Awake()
     {
         Instance = this;
-    }
-    private void Start()
-    {
+
         for (int i = 0; i < row; i++)
         {
             for (int j = 0; j < col; j++)
@@ -26,13 +31,14 @@ public class MapManager : MonoBehaviour
                 cloneCell.transform.SetParent(transform);
                 cloneCell.transform.position = transform.position + Vector3.right * cellW * j + Vector3.forward * cellW * i
                     + Vector3.right * padding * j + Vector3.forward * padding * i;
-                cloneCell.x = i;
-                cloneCell.y = j;
-                Vector2 index = new Vector2(i, j);
-                cellMatrix.Add(index,cloneCell);
+                Vector2 index = new(i, j);
+                cloneCell.pos = index;
+                cellMatrix.Add(index, cloneCell);
             }
         }
-
+    }
+    private void Start()
+    {
         EventManager.Instance.AddListener(EventName.CardSelectedEvent, OnCardSelected);
     }
 
@@ -50,11 +56,11 @@ public class MapManager : MonoBehaviour
     {
         foreach(var index in indexList)
         {
-            Vector2 tempIndex = new Vector2(cell.x + index.x, cell.y+index.y);
+            Vector2 tempIndex = new Vector2(cell.pos.x + index.x, cell.pos.y+index.y);
             if (cellMatrix.ContainsKey(tempIndex))
             {
-                cellMatrix[tempIndex].High();
                 cellMatrix[tempIndex].bCanSelect = true;
+                cellMatrix[tempIndex].High();
             }
         }
     }
@@ -66,5 +72,45 @@ public class MapManager : MonoBehaviour
             cell.Value.bCanSelect = false;
             cell.Value.Normal();
         }
+    }
+    public Cell GetCellFromIndex(Vector2 index)
+    {
+        return cellMatrix[index];
+    }
+
+    public bool CanDamage(Enemy enemy)
+    {
+        Vector2 enemyPos = enemy.GetCurrentCell().pos;
+        Vector2 playerPos = Player.Instance.GetCurrentCell().pos;
+        foreach(var atk in enemy.atkRange)
+        {
+            Vector2 atkPos = new(enemyPos.x + atk.x, enemyPos.y + atk.y);
+            if(atkPos == playerPos)
+            {
+                return true;
+            }       
+        }
+        return false;
+    }
+    public void EnemyMove(Enemy enemy)
+    {
+        var cell = enemy.GetCurrentCell();
+        Vector2 enemyPos = cell.pos;
+        Vector2 playerPos = Player.Instance.GetCurrentCell().pos;
+        foreach (Vector2 dir in dirList)
+        {
+            Vector2 newPos = enemyPos + dir;
+            float newDir = newPos.x - playerPos.x + newPos.y - playerPos.y;
+            float oldDir = enemyPos.x - playerPos.x + enemyPos.y - playerPos.y;
+            if (cellMatrix.ContainsKey(newPos) && newDir <= oldDir)
+            {
+                if (cellMatrix[newPos].bCanSpawn)
+                {
+                    print("发现新位置");
+                    enemy.SetCell(cellMatrix[newPos]);
+                }
+            }
+        }
+        print("搜索完毕");
     }
 }

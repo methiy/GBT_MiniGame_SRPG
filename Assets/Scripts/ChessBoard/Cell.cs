@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Cell : MonoBehaviour
 {
-    [SerializeField] private Color highColor;
-    [SerializeField] private Color selectColor;
+    [SerializeField] protected Color highColor;
+    [SerializeField] protected Color selectColor;
     private Material selfMaterial;
     private Color originColor;
     public bool bCanSelect = true;
-    public int x;
-    public int y;
+    public bool bCanSpawn = true;
+    public int damage = 0;
+    public Vector2 pos;
+
 
     private void Start()
     {

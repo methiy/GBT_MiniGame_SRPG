@@ -16,6 +16,7 @@ public class CardTemplate : MonoBehaviour
     {
         cardButton.onClick.AddListener(() =>
         {
+            MapManager.Instance.LockCells();
             EventManager.Instance.TriggerEvent(EventName.CardSelectedEvent, this, new OnCardSelectedArgs
             {
                 cardType = this.cardType,

@@ -10,9 +10,9 @@ public enum UnitState
 }
 public class Unit : MonoBehaviour
 {
-    private Cell currentCell;
+    protected Cell currentCell;
     private Outline outline;
-    public UnitState state;
+    private UnitState state;
 
     private void Start()
     {
@@ -45,11 +45,21 @@ public class Unit : MonoBehaviour
     }
     public void SetCell(Cell cell)
     {
+        if(this.currentCell != null)
+        {
+            this.currentCell.bCanSpawn = true;
+        }
         this.currentCell = cell;
         transform.position = cell.transform.position;
+        cell.bCanSpawn = false;
     }
     public Cell GetCurrentCell()
     {
         return currentCell;
+    }
+
+    public bool IsPreSelect()
+    {
+        return state == UnitState.PreSelect;
     }
 }

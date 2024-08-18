@@ -6,7 +6,7 @@ public class EnemyState : StateSystem
 {
     public override void Enter(StateSystem oldState = null)
     {
-        
+        EnemyManager.Instance.EnemyHandle();
     }
 
     public override void Execute()
