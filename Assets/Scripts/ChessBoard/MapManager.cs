@@ -97,11 +97,11 @@ public class MapManager : MonoBehaviour
         var cell = enemy.GetCurrentCell();
         Vector2 enemyPos = cell.pos;
         Vector2 playerPos = Player.Instance.GetCurrentCell().pos;
+        float oldDir = enemyPos.x - playerPos.x + enemyPos.y - playerPos.y;
         foreach (Vector2 dir in dirList)
         {
             Vector2 newPos = enemyPos + dir;
             float newDir = newPos.x - playerPos.x + newPos.y - playerPos.y;
-            float oldDir = enemyPos.x - playerPos.x + enemyPos.y - playerPos.y;
             if (cellMatrix.ContainsKey(newPos) && newDir <= oldDir)
             {
                 if (cellMatrix[newPos].bCanSpawn)
