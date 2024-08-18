@@ -812,6 +812,7 @@ MonoBehaviour:
   setButton: {fileID: 612107699}
   endButton: {fileID: 1061626821}
   SetPanel: {fileID: 1940103311}
+  clip: {fileID: 8300000, guid: a787057639146b34ebf1fc18508b7a49, type: 3}
 --- !u!1 &524966997
 GameObject:
   m_ObjectHideFlags: 0
@@ -2807,7 +2808,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ea2e53ccfb05f7e47913f7b9c25ddeae, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2961,7 +2962,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
