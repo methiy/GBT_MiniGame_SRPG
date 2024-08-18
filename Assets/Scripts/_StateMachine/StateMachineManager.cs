@@ -6,7 +6,7 @@ using static UnityEditorInternal.VersionControl.ListControl;
 public class StateMachineManager : MonoBehaviour
 {
     protected StateSystem currentState;
-    public bool GoToState(StateSystem newState)
+    public virtual bool GoToState(StateSystem newState)
     {
         StateSystem lastState = this.currentState;
         if(this.currentState)
@@ -21,5 +21,9 @@ public class StateMachineManager : MonoBehaviour
     public void Execute()
     {
         this.currentState.Execute();
+    }
+    public StateSystem GetCurrentState()
+    {
+        return currentState;
     }
 }

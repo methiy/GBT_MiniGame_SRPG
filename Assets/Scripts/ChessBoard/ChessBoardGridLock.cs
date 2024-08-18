@@ -6,19 +6,13 @@ using UnityEngine;
 
 public class ChessBoardGridLock : MonoBehaviour
 {
-    [SerializeField] private Transform selfGO;
-
-    private Vector3 putPosition;
-    private void Start()
-    {
-        putPosition = new Vector3(selfGO.transform.position.x,selfGO.transform.position.y+selfGO.transform.GetComponent<Renderer>().bounds.size.y, selfGO.transform.position.z);
-    }
+    [SerializeField] private ChessBoardGrid grid;
 
     private void OnMouseEnter()
     {
-        GrabManager.Instance.LockGrabGOOnGrid(putPosition);
+        GrabManager.Instance.LockGrabGOOnGrid(transform.position);
     }
-    
+
     private void OnMouseExit()
     {
         GrabManager.Instance.UnLockGrabGO();
@@ -26,9 +20,6 @@ public class ChessBoardGridLock : MonoBehaviour
 
     private void OnMouseDown()
     {
-        EventManager.Instance.TriggerEvent(EventName.OnGrabObjectPutDownEvent, this,new OnGrabObjectPutDownArgs
-        {
-            putPosition = this.putPosition,
-        });
+        grid.OnGrabPutDown();
     }
 }

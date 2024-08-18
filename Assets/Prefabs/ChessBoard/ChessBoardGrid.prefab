@@ -12,12 +12,12 @@ GameObject:
   - component: {fileID: 1892098784098630975}
   - component: {fileID: 4053029761474253150}
   m_Layer: 0
-  m_Name: PutPosition
+  m_Name: Lock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3114991559987785478
 Transform:
   m_ObjectHideFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2441834705533267385}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.763, z: 0}
+  m_LocalPosition: {x: 0, y: 0.525, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ba192d0e370e9e4586d54f533613feb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selfGO: {fileID: 7776559652511078500}
+  grid: {fileID: 1702887730020588046}
 --- !u!65 &4053029761474253150
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -79,6 +79,7 @@ GameObject:
   - component: {fileID: 4710997378494557731}
   - component: {fileID: 6212588400009159521}
   - component: {fileID: 2989313067062286495}
+  - component: {fileID: 1702887730020588046}
   m_Layer: 0
   m_Name: ChessBoardGrid
   m_TagString: Untagged
@@ -173,3 +174,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1702887730020588046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8664622156131356856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e59b10842570564081d9dffe28d28d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockComponent: {fileID: 1892098784098630975}
