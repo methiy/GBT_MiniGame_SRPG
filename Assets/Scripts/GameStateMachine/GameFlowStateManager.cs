@@ -19,14 +19,6 @@ public class GameFlowStateManager : StateMachineManager
     private void Start()
     {
         this.GoToState(beginState);
-
-        //EventManager.Instance.AddListener(EventName.OnGrabObjectPutDownEvent, (object sender, EventArgs e) =>
-        //{
-        //    if(this.currentState == beginState)
-        //    {
-        //        this.GoToState(moveCardState);
-        //    }
-        //});
     }
     public override bool GoToState(StateSystem newState)
     {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public enum UnitState
@@ -45,7 +46,11 @@ public class Unit : MonoBehaviour
     }
     public void SetCell(Cell cell)
     {
-        if(this.currentCell != null)
+        if (!cell.bCanSpawn)
+        {
+            print("被设置在不可以重生的地方");
+        }
+        if (this.currentCell != null)
         {
             this.currentCell.bCanSpawn = true;
         }

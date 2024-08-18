@@ -18,3 +18,8 @@ public class OnCardSelectedArgs : EventArgs
     public CardType cardType;
     public List<Vector2> rangeList;
 }
+
+public class OnGameOverEventArgs : EventArgs
+{
+    public bool bIsWin;
+}
