@@ -11,6 +11,7 @@ public class CardTemplate : MonoBehaviour, IDragHandler, IEndDragHandler,IPointe
 
     [SerializeField]private int cardID;
     public void SetID(int index) => cardID = index;
+    public AudioClip fanClip;
 
     [SerializeField]private CardContainer cardContainer;
 
@@ -59,6 +60,7 @@ public class CardTemplate : MonoBehaviour, IDragHandler, IEndDragHandler,IPointe
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        ClipManager.Instance.PlayClip(fanClip);
         transform.DOScale(originalScale * scaleUpFactor, scaleDuration).SetEase(Ease.OutBack);
     }
  

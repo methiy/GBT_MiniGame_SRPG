@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardID: 0
+  fanClip: {fileID: 8300000, guid: fd58a32d69b7c8e41af42d9406e99b36, type: 3}
   cardContainer: {fileID: 0}
   cardButton: {fileID: 793118681196351283}
   cardNameText: {fileID: 2167666899080700090}
@@ -61,6 +62,7 @@ MonoBehaviour:
   - {x: 1, y: 0}
   - {x: -1, y: 0}
   cardName: Soldier
+  damage: 1
   preParent: {fileID: 0}
   tempParent: {fileID: 0}
   canvasGroup: {fileID: 0}

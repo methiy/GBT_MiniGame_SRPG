@@ -14,6 +14,7 @@ public class Unit : MonoBehaviour
 {
     [SerializeField] private float jumpHigh;
     [SerializeField] private float jumpTimer;
+    public AudioClip putClip;
     private Cell currentCell;
     private Outline outline;
     private UnitState state;
@@ -53,6 +54,7 @@ public class Unit : MonoBehaviour
         {
             Debug.LogError("被设置在不可以重生的地方");
         }
+        ClipManager.Instance.PlayClip(putClip);
         if (this.currentCell != null)
         {
             this.currentCell.bCanSelect = true;

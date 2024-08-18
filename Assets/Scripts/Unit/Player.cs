@@ -6,6 +6,7 @@ using UnityEngine;
 public class Player : Unit
 {
     public float maxHp;
+    public AudioClip clip;
     private float hp;
     public float HP
     {
@@ -30,6 +31,7 @@ public class Player : Unit
     }
     public void TakeDamage(int damage)
     {
+        ClipManager.Instance.PlayClip(clip);
         HP -= damage;
         if (HP <= 0)
         {

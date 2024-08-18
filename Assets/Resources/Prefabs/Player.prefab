@@ -84,3 +84,4 @@ MonoBehaviour:
   jumpHigh: 1
   jumpTimer: 1
   maxHp: 10
+  clip: {fileID: 8300000, guid: bb88ea90a678c7c4388788a18befdee6, type: 3}

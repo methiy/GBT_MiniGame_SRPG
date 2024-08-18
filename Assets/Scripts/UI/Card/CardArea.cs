@@ -11,6 +11,7 @@ public enum CardType
 }
 public class CardArea : MonoBehaviour
 {
+    public AudioClip clip;
     [SerializeField] private Button skipButton;
     [SerializeField] private Transform cardContainer;
     [SerializeField] private List<Transform> moveCardGroup;
@@ -52,6 +53,7 @@ public class CardArea : MonoBehaviour
     }
     private void OnSkipButtonClicked()
     {
+        ClipManager.Instance.PlayClip(clip);
         switch (cardType)
         {
             case CardType.MoveCard:

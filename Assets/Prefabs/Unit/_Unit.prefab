@@ -50,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpHigh: 0
   jumpTimer: 0
+  putClip: {fileID: 8300000, guid: 1b919d7997dae4544b543f7e0579efdc, type: 3}
 --- !u!114 &9203331398189677112
 MonoBehaviour:
   m_ObjectHideFlags: 0

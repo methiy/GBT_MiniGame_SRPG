@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class MagicCardState : StateSystem
 {
+    public List<AudioClip> clips;
     private int currentDamage;
     private void Start()
     {
@@ -29,6 +30,8 @@ public class MagicCardState : StateSystem
         {
             if(TickTraceManager.Instance.currentCellUnit.TryGetComponent<Enemy>(out Enemy enemy))
             {
+                int index = UnityEngine.Random.Range(0, clips.Count);
+                ClipManager.Instance.PlayClip(clips[index]);
                 enemy.TakeDamage(currentDamage);
                 GameFlowStateManager.Instance.GoToState(GameFlowStateManager.Instance.moveCardState);
             }
