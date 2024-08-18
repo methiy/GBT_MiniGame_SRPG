@@ -8,17 +8,16 @@ public class MoveCardState : StateSystem
     {
         if(oldState == GameFlowStateManager.Instance.enemyState || oldState == GameFlowStateManager.Instance.beginState)
         {
-            print("÷ÿ÷√≤Ω ˝");
             PlayerProps.Instance.RestStep();
         }
     }
 
     public override void Execute()
     {
-        
     }
 
     public override void Leave(StateSystem newState = null)
     {
+
     }
 }

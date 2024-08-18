@@ -12,7 +12,7 @@ public class CellUnit : MonoBehaviour
 {
     private Cell currentCell;
     private Outline outline;
-    private UnitState state;
+    public UnitState state;
 
     private void Start()
     {
@@ -34,21 +34,22 @@ public class CellUnit : MonoBehaviour
     {
         state = UnitState.Selected;
         outline.OutlineColor = Color.green;
-        print("选中");
+        // 显示选中UI
     }
 
     public void UnSelect()
     {
-        if(state == UnitState.Selected)
-        {
-            return;
-        }
         outline.enabled = false;
         state = UnitState.Idle;
+        // 清理选中UI
     }
     public void SetCell(Cell cell)
     {
         this.currentCell = cell;
         transform.position = cell.transform.position;
+    }
+    public Cell GetCurrentCell()
+    {
+        return currentCell;
     }
 }

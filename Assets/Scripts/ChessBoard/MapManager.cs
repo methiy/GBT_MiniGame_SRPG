@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,6 +31,22 @@ public class MapManager : MonoBehaviour
                 Vector2 index = new Vector2(i, j);
                 cellMatrix.Add(index,cloneCell);
             }
+        }
+
+        EventManager.Instance.AddListener(EventName.CardSelectedEvent, OnCardSelected);
+    }
+
+    private void OnCardSelected(object sender, EventArgs e)
+    {
+        var args = e as OnCardSelectedArgs;
+        CellUnit currentCellUnit = GameObject.FindObjectOfType<CellUnit>();
+        if (currentCellUnit != null)
+        {
+            this.HighCell(currentCellUnit.GetCurrentCell(), args.rangeList);
+        }
+        else
+        {
+            print("√ª’“µΩ");
         }
     }
 

@@ -119,4 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5536187ffbb6a6b4b8b0fdcf1b3bdf55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highColor: {r: 0.3433349, g: 0.98490566, b: 0.2880383, a: 0.5176471}
+  highColor: {r: 0.3433349, g: 0.98490566, b: 0.2880383, a: 0.39215687}
+  selectColor: {r: 1, g: 0.464503, b: 0, a: 0.39215687}
+  x: 0
+  y: 0

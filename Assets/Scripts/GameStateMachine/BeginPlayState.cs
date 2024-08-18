@@ -4,23 +4,25 @@ using UnityEngine;
 
 public class BeginPlayState : StateSystem
 {
-    private GameObject player;
-    private void Start()
-    {
-        player = Player.Instance.gameObject;
-    }
+    [SerializeField] private GameObject originUnit;
     public override void Enter(StateSystem oldState = null)
     {
-        GrabManager.Instance.UpdateGrabGO(player);
-        EventManager.Instance.TriggerEvent(EventName.OnGrabObjectBeginEvent, this);
+        TickTraceManager.Instance.bCanTraceCell = true;
     }
 
     public override void Execute()
     {
+        if (TickTraceManager.Instance.currentCell != null)
+        {
+            GameObject clone = Instantiate(originUnit);
+            clone.GetComponent<CellUnit>().SetCell(TickTraceManager.Instance.currentCell);
+            GameFlowStateManager.Instance.GoToState(GameFlowStateManager.Instance.moveCardState);
+        }
     }
 
     public override void Leave(StateSystem newState = null)
     {
-        EventManager.Instance.TriggerEvent(EventName.OnGrabObjectEndEvent, this);
+        TickTraceManager.Instance.bCanTraceCell = false;
+        //EventManager.Instance.TriggerEvent(EventName.OnGrabObjectEndEvent, this);
     }
 }

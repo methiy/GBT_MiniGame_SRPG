@@ -5,8 +5,10 @@ using UnityEngine;
 public class Cell : MonoBehaviour
 {
     [SerializeField] private Color highColor;
+    [SerializeField] private Color selectColor;
     private Material selfMaterial;
     private Color originColor;
+    public bool bCanSelect = true;
     public int x;
     public int y;
 

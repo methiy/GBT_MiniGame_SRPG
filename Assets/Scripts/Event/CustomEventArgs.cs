@@ -13,3 +13,8 @@ public class OnChangeGameFlowStateMachineArgs : EventArgs
     public StateSystem oldState;
     public StateSystem newState;
 }
+public class OnCardSelectedArgs : EventArgs
+{
+    public CardType cardType;
+    public List<Vector2> rangeList;
+}
