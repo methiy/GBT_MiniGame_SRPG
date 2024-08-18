@@ -8,7 +8,9 @@ using UnityEngine.UI;
 
 public class EndPlayUI : MonoBehaviour
 {
+    [SerializeField] private List<string> storyList;
     [SerializeField] private TextMeshProUGUI endText;
+    [SerializeField] private TextMeshProUGUI storyText;
     [SerializeField] private Button continueButton;
     [SerializeField] private Button returnButton;
     [SerializeField] private Button backButton;
@@ -31,6 +33,8 @@ public class EndPlayUI : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         });
+        int index = UnityEngine.Random.Range(0, storyList.Count);
+        storyText.text = storyList[index];
         continueButton.gameObject.SetActive(false);
         gameObject.SetActive(false);
     }

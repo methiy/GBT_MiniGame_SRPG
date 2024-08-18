@@ -19,6 +19,7 @@ public class BeginStoryUI : MonoBehaviour
         {
             animator.enabled = true;
             GameFlowStateManager.Instance.GoToState(GameFlowStateManager.Instance.beginState);
+            gameObject.SetActive(false);
         });
     }
 }

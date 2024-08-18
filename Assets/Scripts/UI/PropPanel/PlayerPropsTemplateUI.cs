@@ -29,12 +29,13 @@ public class PlayerPropsTemplateUI : MonoBehaviour
         if(args.newState == GameFlowStateManager.Instance.moveCardState)
         {
             gameObject.SetActive(true);
-            hpText.text = Player.Instance.maxHp.ToString();
+            hpText.text = Player.Instance.HP.ToString();
             hpMaxText.text = Player.Instance.maxHp.ToString();
         }
     }
     private void OnPlayerHPChanged(object obj,EventArgs e)
     {
+        print("玩家当前血量"+Player.Instance.HP.ToString());
         hpText.text = Player.Instance.HP.ToString();
         hpImage.fillAmount = Player.Instance.HP / Player.Instance.maxHp;
     }
