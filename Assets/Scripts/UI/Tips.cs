@@ -11,9 +11,13 @@ public class Tips : MonoBehaviour
     [SerializeField] private string MoveText;
     [SerializeField] private string MagicText;
     [SerializeField] private string EnemyText;
-    private void Start()
+    private void Awake()
     {
         EventManager.Instance.AddListener(EventName.OnChangeGameFlowStateMachineEvent, OnChangeGameFlowState);
+    }
+    private void Start()
+    {
+        
     }
 
     private void OnChangeGameFlowState(object obj,EventArgs e)

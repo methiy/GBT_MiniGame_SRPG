@@ -12,11 +12,15 @@ public class PlayerPropsTemplateUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI hpMaxText;
     [SerializeField] private Image hpImage;
 
-    private void Start()
+    private void Awake()
     {
-        EventManager.Instance.AddListener(EventName.OnChangeGameFlowStateMachineEvent,ChangeGameFlow);
+        EventManager.Instance.AddListener(EventName.OnChangeGameFlowStateMachineEvent, ChangeGameFlow);
         EventManager.Instance.AddListener(EventName.OnPlayerHPChangedEvent, OnPlayerHPChanged);
         gameObject.SetActive(false);
+    }
+    private void Start()
+    {
+        
     }
 
     private void ChangeGameFlow(object obj,EventArgs e)
