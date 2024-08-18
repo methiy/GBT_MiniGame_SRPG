@@ -42,7 +42,7 @@ public class CardArea : MonoBehaviour
         {
             cardType = CardType.MoveCard;
         }
-        else if (e.oldState == GameFlowStateManager.Instance.moveCardState)
+        else
         {
             gameObject.SetActive(false);
         }

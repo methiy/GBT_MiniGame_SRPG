@@ -8,6 +8,7 @@ public class EnemyManager : MonoBehaviour
     //[SerializeField] private Dictionary<Enemy, Vector2> enemyList;
     [SerializeField] private List<Enemy> enemyList;
     [SerializeField] private List<Vector2> enemyPosList;
+    [SerializeField] private float ToggleTimer;
 
     private void Awake()
     {
@@ -39,9 +40,14 @@ public class EnemyManager : MonoBehaviour
                 Player.Instance.TakeDamage(enemy.damage);
             }
         }
+        StartCoroutine(Delay());
+        
+    }
+    private IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(ToggleTimer);
         GameFlowStateManager.Instance.GoToState(GameFlowStateManager.Instance.moveCardState);
     }
-
     private void CalculateDamage(Enemy enemy)
     {
         int damage = enemy.GetCurrentCell().damage;

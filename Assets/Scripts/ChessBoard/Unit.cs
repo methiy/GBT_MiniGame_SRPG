@@ -12,6 +12,8 @@ public enum UnitState
 }
 public class Unit : MonoBehaviour
 {
+    [SerializeField] private float jumpHigh;
+    [SerializeField] private float jumpTimer;
     protected Cell currentCell;
     private Outline outline;
     private UnitState state;
@@ -57,13 +59,12 @@ public class Unit : MonoBehaviour
             this.currentCell.bCanSpawn = true;
         }
         this.currentCell = cell;
-        transform.DOMove(cell.transform.position,2f).OnComplete(()=>
+        transform.DOJump(cell.transform.position, jumpHigh, 1, jumpTimer).OnComplete(() =>
         {
-
+            transform.position = cell.transform.position;
+            cell.bCanSelect = false;
+            cell.bCanSpawn = false;
         });
-        transform.position = cell.transform.position;
-        cell.bCanSelect = false;
-        cell.bCanSpawn = false;
     }
     public Cell GetCurrentCell()
     {
