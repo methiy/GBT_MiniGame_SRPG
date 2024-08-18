@@ -15,7 +15,7 @@ public class EnemyPropsPanelUI : MonoBehaviour
     }
     private void Start()
     {
-        EventManager.Instance.AddListener(EventName.OnEnemyCreateEvent, OnEnemyCreate);
+        //EventManager.Instance.AddListener(EventName.OnEnemyCreateEvent, OnEnemyCreate);
     }
     private void OnEnemyCreate(object obj,EventArgs e)
     {
