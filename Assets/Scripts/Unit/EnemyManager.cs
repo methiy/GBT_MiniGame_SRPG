@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     public static EnemyManager Instance { get; private set; }
+    //[SerializeField] private Dictionary<Enemy, Vector2> enemyList;
     [SerializeField] private List<Enemy> enemyList;
     [SerializeField] private List<Vector2> enemyPosList;
 
@@ -14,11 +15,15 @@ public class EnemyManager : MonoBehaviour
     }
     private void Start()
     {
-        for (int i = 0; i < enemyList.Count; i++)
+        //foreach (var enemy in enemyList)
+        //{
+        //    Cell cell = MapManager.Instance.GetCellFromIndex(enemy.Value);
+        //    enemy.Key.SetCell(cell);
+        //}
+        for(int i = 0;i < enemyList.Count; i++)
         {
             Cell cell = MapManager.Instance.GetCellFromIndex(enemyPosList[i]);
             enemyList[i].SetCell(cell);
-            print("ÉèÖÃ¹ÖÎïÎ»ÖÃ");
         }
     }
 

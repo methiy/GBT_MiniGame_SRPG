@@ -45,19 +45,15 @@ public class MapManager : MonoBehaviour
     private void OnCardSelected(object sender, EventArgs e)
     {
         var args = e as OnCardSelectedArgs;
-        Unit currentCellUnit = GameObject.FindObjectOfType<Unit>();
-        if (currentCellUnit != null)
-        {
-            this.HighCell(currentCellUnit.GetCurrentCell(), args.rangeList);
-        }
+        this.HighCell(Player.Instance.GetCurrentCell(), args.rangeList);
     }
 
-    public void HighCell(Cell cell,List<Vector2> indexList)
+    public void HighCell(Cell cell, List<Vector2> indexList)
     {
-        foreach(var index in indexList)
+        foreach (var index in indexList)
         {
-            Vector2 tempIndex = new Vector2(cell.pos.x + index.x, cell.pos.y+index.y);
-            if (cellMatrix.ContainsKey(tempIndex))
+            Vector2 tempIndex = new Vector2(cell.pos.x + index.x, cell.pos.y + index.y);
+            if (cellMatrix.ContainsKey(tempIndex) && cellMatrix[tempIndex].bCanSpawn)
             {
                 cellMatrix[tempIndex].bCanSelect = true;
                 cellMatrix[tempIndex].High();
@@ -67,7 +63,7 @@ public class MapManager : MonoBehaviour
 
     public void LockCells()
     {
-        foreach( var cell in cellMatrix)
+        foreach (var cell in cellMatrix)
         {
             cell.Value.bCanSelect = false;
             cell.Value.Normal();
@@ -82,13 +78,13 @@ public class MapManager : MonoBehaviour
     {
         Vector2 enemyPos = enemy.GetCurrentCell().pos;
         Vector2 playerPos = Player.Instance.GetCurrentCell().pos;
-        foreach(var atk in enemy.atkRange)
+        foreach (var atk in enemy.atkRange)
         {
             Vector2 atkPos = new(enemyPos.x + atk.x, enemyPos.y + atk.y);
-            if(atkPos == playerPos)
+            if (atkPos == playerPos)
             {
                 return true;
-            }       
+            }
         }
         return false;
     }
@@ -106,7 +102,7 @@ public class MapManager : MonoBehaviour
             float newDis = Vector2.Distance(newPos, playerPos);
             if (cellMatrix.ContainsKey(newPos) && cellMatrix[newPos].bCanSpawn)
             {
-                if (newDis <= oldDis )
+                if (newDis <= oldDis)
                 {
                     finalPos = newPos;
                     found = true;

@@ -18,8 +18,8 @@ public class MoveCardState : StateSystem
         {
             return;
         }
-        Unit unit = GameObject.FindObjectOfType<Unit>();
-        unit.SetCell(TickTraceManager.Instance.currentCell);
+
+        Player.Instance.SetCell(TickTraceManager.Instance.currentCell);
         if (PlayerProps.Instance.SubStep(1) > 0) 
         {
             PlayerProps.Instance.AddPower();

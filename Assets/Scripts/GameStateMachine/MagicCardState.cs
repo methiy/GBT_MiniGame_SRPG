@@ -15,6 +15,6 @@ public class MagicCardState : StateSystem
 
     public override void Leave(StateSystem newState = null)
     {
-
+        MapManager.Instance.LockCells();
     }
 }

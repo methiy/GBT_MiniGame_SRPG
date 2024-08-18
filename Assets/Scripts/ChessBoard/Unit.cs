@@ -52,10 +52,12 @@ public class Unit : MonoBehaviour
         }
         if (this.currentCell != null)
         {
+            this.currentCell.bCanSelect = true;
             this.currentCell.bCanSpawn = true;
         }
         this.currentCell = cell;
         transform.position = cell.transform.position;
+        cell.bCanSelect = false;
         cell.bCanSpawn = false;
     }
     public Cell GetCurrentCell()

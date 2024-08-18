@@ -1256,6 +1256,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6381406250755675470, guid: ffe454a8f8086764fbaf65e8900a58fe, type: 3}
+      propertyPath: damage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -6381406250755675470, guid: ffe454a8f8086764fbaf65e8900a58fe, type: 3}
+      propertyPath: atkRange.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -6381406250755675470, guid: ffe454a8f8086764fbaf65e8900a58fe, type: 3}
+      propertyPath: atkRange.Array.data[0].x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6381406250755675470, guid: ffe454a8f8086764fbaf65e8900a58fe, type: 3}
+      propertyPath: atkRange.Array.data[0].y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6381406250755675470, guid: ffe454a8f8086764fbaf65e8900a58fe, type: 3}
+      propertyPath: atkRange.Array.data[1].y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6381406250755675470, guid: ffe454a8f8086764fbaf65e8900a58fe, type: 3}
+      propertyPath: atkRange.Array.data[2].x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6381406250755675470, guid: ffe454a8f8086764fbaf65e8900a58fe, type: 3}
+      propertyPath: atkRange.Array.data[2].y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6381406250755675470, guid: ffe454a8f8086764fbaf65e8900a58fe, type: 3}
+      propertyPath: atkRange.Array.data[3].x
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 3035661302590905829, guid: ffe454a8f8086764fbaf65e8900a58fe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
