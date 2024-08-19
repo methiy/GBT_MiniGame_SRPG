@@ -9,7 +9,8 @@ using UnityEngine.UI;
 public class EndPlayUI : MonoBehaviour
 {
     [SerializeField] private List<string> storyList;
-    [SerializeField] private TextMeshProUGUI endText;
+    [SerializeField] private Image lossImage;
+    [SerializeField] private Image winImage;
     [SerializeField] private TextMeshProUGUI storyText;
     [SerializeField] private Button continueButton;
     [SerializeField] private Button returnButton;
@@ -57,11 +58,16 @@ public class EndPlayUI : MonoBehaviour
     {
         gameObject.SetActive(true);
         var args = e as OnGameOverEventArgs;
-        this.endText.text = "Loss";
+        //this.endText.text = "Loss";
         if (args.bIsWin)
         {
+            lossImage.gameObject.SetActive(false);
             continueButton.gameObject.SetActive(true);
-            this.endText.text = "Win!";
+            //this.endText.text = "Win!";
+        }
+        else
+        {
+            winImage.gameObject.SetActive(false);
         }
     }
 }
