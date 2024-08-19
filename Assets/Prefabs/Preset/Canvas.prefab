@@ -645,10 +645,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5048987912557141703}
     m_Modifications:
-    - target: {fileID: 874967232302033677, guid: cdd59556497b849409854312e4421b98, type: 3}
-      propertyPath: m_text
-      value: NewText
-      objectReference: {fileID: 0}
     - target: {fileID: 5615818615507436458, guid: cdd59556497b849409854312e4421b98, type: 3}
       propertyPath: m_Name
       value: TipsUI
@@ -751,10 +747,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5048987912557141703}
     m_Modifications:
-    - target: {fileID: 3714430716261379391, guid: 02c886b369cef2942a3a42c7db5db3da, type: 3}
-      propertyPath: clip
-      value: 
-      objectReference: {fileID: 8300000, guid: fa63437e3db1a03448e744a565d5a007, type: 3}
     - target: {fileID: 3714430716261379391, guid: 02c886b369cef2942a3a42c7db5db3da, type: 3}
       propertyPath: ThanksUI
       value: 

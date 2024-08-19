@@ -591,6 +591,8 @@ MonoBehaviour:
   continueButton: {fileID: 1130222491713609595}
   returnButton: {fileID: 4083378141361029569}
   backButton: {fileID: 2976881183519969509}
+  thanksUI: {fileID: 0}
+  clip: {fileID: 8300000, guid: fa63437e3db1a03448e744a565d5a007, type: 3}
 --- !u!1 &4844351955700634641
 GameObject:
   m_ObjectHideFlags: 0
