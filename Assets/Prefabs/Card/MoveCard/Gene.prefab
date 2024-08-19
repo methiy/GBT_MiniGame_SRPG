@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 433821155590834399, guid: ab5092da890da934688c7a94247f7e22, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 6c7e964c4d911c5488c0b550dafac05f, type: 3}
+      objectReference: {fileID: 21300000, guid: c1998cb14fe20984d8fc2f56583fe6ba, type: 3}
     - target: {fileID: 1116839740768846790, guid: ab5092da890da934688c7a94247f7e22, type: 3}
       propertyPath: m_Name
       value: Gene
@@ -102,7 +102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8770325554757679665, guid: ab5092da890da934688c7a94247f7e22, type: 3}
       propertyPath: cardName
-      value: "\u5C06\u519B"
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8770325554757679665, guid: ab5092da890da934688c7a94247f7e22, type: 3}
       propertyPath: rangeList.Array.size

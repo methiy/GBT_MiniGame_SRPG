@@ -2648,6 +2648,27 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3663301839982825404, guid: 69184f0ef00096c4887c9b8b83eb6e24, type: 3}
+      propertyPath: m_text
+      value: "\u7A0B\u5E8F\uFF1A\u5F90\u9633\u3001Zihao Zhou"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3663301839982825404, guid: 69184f0ef00096c4887c9b8b83eb6e24, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 195516bb74eb80f429c15ba9ffcfe2d5, type: 2}
+    - target: {fileID: 3663301839982825404, guid: 69184f0ef00096c4887c9b8b83eb6e24, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 986556549188173444, guid: 195516bb74eb80f429c15ba9ffcfe2d5, type: 2}
+    - target: {fileID: 3663301839982825404, guid: 69184f0ef00096c4887c9b8b83eb6e24, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3749534060725612149, guid: 69184f0ef00096c4887c9b8b83eb6e24, type: 3}
+      propertyPath: m_text
+      value: "\u7F8E\u672F\uFF1A\u9EC4\u82CF\u598D\u3001\u6234\u6021\u9676\u3001Yanrong
+        Shi\u3001Xindi Zhang"
+      objectReference: {fileID: 0}
     - target: {fileID: 5048987912557141703, guid: 69184f0ef00096c4887c9b8b83eb6e24, type: 3}
       propertyPath: m_Pivot.x
       value: 0
