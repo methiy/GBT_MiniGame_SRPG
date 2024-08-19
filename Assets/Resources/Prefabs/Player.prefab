@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3020690534984127644, guid: 44119589fe437af48b7440a1c93fd7c9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a21a8534eca3493408c9a67531e27aa5, type: 2}
     - target: {fileID: 919132149155446097, guid: 44119589fe437af48b7440a1c93fd7c9, type: 3}
       propertyPath: m_Name
       value: black
@@ -153,6 +157,18 @@ PrefabInstance:
     - target: {fileID: 9165985812337885244, guid: 4fb4d23d9072ddf42b74a7273ea33268, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9203331398189677112, guid: 4fb4d23d9072ddf42b74a7273ea33268, type: 3}
+      propertyPath: outlineColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9203331398189677112, guid: 4fb4d23d9072ddf42b74a7273ea33268, type: 3}
+      propertyPath: outlineColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9203331398189677112, guid: 4fb4d23d9072ddf42b74a7273ea33268, type: 3}
+      propertyPath: outlineColor.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

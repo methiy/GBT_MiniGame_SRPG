@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6387354727882276740, guid: 7e88f394c32a9584abab395316c240f4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fad75fc66b2bb304dae86e1bee8f1d23, type: 2}
     - target: {fileID: 919132149155446097, guid: 7e88f394c32a9584abab395316c240f4, type: 3}
       propertyPath: m_Name
       value: blue
@@ -204,6 +208,10 @@ MonoBehaviour:
   putClip: {fileID: 0}
   hp: 3
   enemyName: 
-  atkRange: []
+  atkRange:
+  - {x: 0, y: 1}
+  - {x: 0, y: -1}
+  - {x: 1, y: 0}
+  - {x: -1, y: 0}
   damage: 2
   maxHp: 0
