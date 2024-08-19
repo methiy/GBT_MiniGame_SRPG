@@ -18,7 +18,6 @@ public class ThanksUI : MonoBehaviour
         });
         exitButton.onClick.AddListener(() =>
         {
-            UnityEditor.EditorApplication.isPlaying = false;
             Application.Quit();
         });
         gameObject.SetActive(false);

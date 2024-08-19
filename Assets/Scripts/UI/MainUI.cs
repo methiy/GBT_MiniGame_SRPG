@@ -26,7 +26,6 @@ public class MainUI : MonoBehaviour
         });
         endButton.onClick.AddListener(() =>
         {
-            UnityEditor.EditorApplication.isPlaying = false;
             Application.Quit();
         });
         print("ÐÞ¸Äclip");
