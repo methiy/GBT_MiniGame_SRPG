@@ -12,9 +12,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Obstacle
       objectReference: {fileID: 0}
+    - target: {fileID: 4133452126701242518, guid: 4fb4d23d9072ddf42b74a7273ea33268, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 97e068722459a454dbab4553aa84cec8, type: 2}
     - target: {fileID: 6311398585291431419, guid: 4fb4d23d9072ddf42b74a7273ea33268, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9165985812337885244, guid: 4fb4d23d9072ddf42b74a7273ea33268, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.6705
+      objectReference: {fileID: 0}
+    - target: {fileID: 9165985812337885244, guid: 4fb4d23d9072ddf42b74a7273ea33268, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.6705
+      objectReference: {fileID: 0}
+    - target: {fileID: 9165985812337885244, guid: 4fb4d23d9072ddf42b74a7273ea33268, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.6705
       objectReference: {fileID: 0}
     - target: {fileID: 9165985812337885244, guid: 4fb4d23d9072ddf42b74a7273ea33268, type: 3}
       propertyPath: m_LocalPosition.x
@@ -82,3 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3822d9e4ad4f15a46a591b70e562601e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpHigh: 0
+  jumpTimer: 0
+  putClip: {fileID: 0}
